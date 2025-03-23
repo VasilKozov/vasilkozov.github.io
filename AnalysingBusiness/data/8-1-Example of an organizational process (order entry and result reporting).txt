@@ -1,0 +1,9 @@
+The business process illustrated is a clinical workflow focused on radiology and its integration with a ward or ambulatory setting. It starts with order preparation and entry in the ward. Once the order is formulated, it's checked for completeness and accuracy. If the order is rejected, it exits the process. Otherwise, the patient is transferred to radiology, indicating the initiation of the imaging process.
+
+Upon reaching radiology, the order undergoes an indication check. This step ensures the appropriateness of the radiological examination and verifies prerequisites. If the order doesn't meet initial criteria, it is acknowledged and rejected; however, an accepted order moves to the scheduling phase. Scheduling offers orderly management of resources and timing to streamline the patient's journey.
+
+After scheduling, the next phase is the medical examination, where the actual radiological procedure takes place in the examination room. Once completed, results are documented immediately to capture necessary clinical insights. These results then undergo a validity check to ensure accuracy and completeness. Should discrepancies arise, the process loops back for revision. Validated documentation is forwarded for reporting, where a thorough analysis occurs.
+
+In the final steps, the report is printed and signed, confirming integrity and readiness for dissemination. The signed report returns to the ward for acknowledgment, allowing practitioners to provide follow-up care based on the results.
+
+Optimization opportunities are found in automation. Automated checks for order validity and centralized scheduling systems could alleviate bottlenecks. Real-time data transfer decreases turnaround time and expedites patient management. Adopting electronic signatures simplifies report acknowledgment and reduces paper dependency. These enhancements align with best practices, enhancing overall efficiency, accuracy, and patient care quality within this workflow.
