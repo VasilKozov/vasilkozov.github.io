@@ -61,11 +61,18 @@
   <span id="close" style="
     position:fixed; top:20px; right:30px; color:#fff; font-size:40px; cursor:pointer; z-index:1001;
   ">&times;</span>
-  <img id="modal-img" style="
-    display:block; margin:auto; position:absolute; top:0; bottom:0; left:0; right:0; 
-    max-width:none; max-height:none; width:auto; height:auto;
+  
+  <div id="modal-content" style="
+    display:flex; flex-direction:column; justify-content:center; align-items:center; 
+    height:100%; width:100%; padding-top:50px; box-sizing:border-box;
   ">
+    <h2 id="modal-title" style="color:#fff; margin-bottom:20px; text-align:center;"></h2>
+    <img id="modal-img" style="
+      max-width:none; max-height:none; width:auto; height:auto;
+    ">
+  </div>
 </div>
+
 
 
 
@@ -161,6 +168,7 @@
   // Modal functionality
   const modal = document.getElementById("modal");
   const modalImg = document.getElementById("modal-img");
+  const modalTitle = document.getElementById("modal-title");
   const closeBtn = document.getElementById("close");
 
   // Event delegation for dynamically added images
@@ -168,6 +176,10 @@
     if (event.target.tagName === 'IMG') {
       modal.style.display = "block";
       modalImg.src = event.target.src;
+
+      // Extracting and setting diagram name
+      const diagramName = event.target.alt.replace('data/', '').replace('.jpg', '');
+      modalTitle.textContent = diagramName;
 
       // Reset image sizing to original dimensions
       modalImg.onload = function() {
@@ -182,12 +194,13 @@
     modal.style.display = "none";
   }
 
-  // Close modal when clicking outside image
+  // Close modal when clicking outside image or title
   modal.onclick = function(event) {
-    if (event.target !== modalImg) {
+    if (event.target !== modalImg && event.target !== modalTitle) {
       modal.style.display = "none";
     }
   };
+
 
 
 
