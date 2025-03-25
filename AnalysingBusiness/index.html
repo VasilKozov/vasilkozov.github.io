@@ -21,7 +21,8 @@
     }
     img {
       width: 100%;
-      height: auto;
+      height: 200px;  /* Fixed height or any preferred height */
+      object-fit: contain; /* Maintains aspect ratio without stretching */
     }
     .text {
       white-space: pre-wrap;
@@ -34,6 +35,23 @@
   </style>
 </head>
 <body>
+
+<!-- Modal HTML -->
+<div id="modal" style="
+    display:none; position:fixed; z-index:1000; left:0; top:0;
+    width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.8);
+">
+  <span id="close" style="
+    position:fixed; top:20px; right:30px; color:#fff; font-size:40px; cursor:pointer; z-index:1001;
+  ">&times;</span>
+  <img id="modal-img" style="
+    display:block; margin:auto; position:absolute; top:0; bottom:0; left:0; right:0; 
+    max-width:none; max-height:none; width:auto; height:auto;
+  ">
+</div>
+
+
+
 
 <h1>Diagram - Text - Audio Viewer</h1>
 <div class="container" id="viewer"></div>
@@ -122,6 +140,40 @@
 
     container.appendChild(item);
   });
+
+  // Modal functionality
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modal-img");
+  const closeBtn = document.getElementById("close");
+
+  // Event delegation for dynamically added images
+  document.getElementById("viewer").addEventListener('click', function(event) {
+    if (event.target.tagName === 'IMG') {
+      modal.style.display = "block";
+      modalImg.src = event.target.src;
+
+      // Reset image sizing to original dimensions
+      modalImg.onload = function() {
+        modalImg.style.width = modalImg.naturalWidth + "px";
+        modalImg.style.height = modalImg.naturalHeight + "px";
+      };
+    }
+  });
+
+  // Close modal on clicking close button
+  closeBtn.onclick = function() { 
+    modal.style.display = "none";
+  }
+
+  // Close modal when clicking outside image
+  modal.onclick = function(event) {
+    if (event.target !== modalImg) {
+      modal.style.display = "none";
+    }
+  };
+
+
+
 </script>
 
 </body>
