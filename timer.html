@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <title>Изпитен Таймер</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    #remainingTime {
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+    .warning {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Въвеждане на информация за изпит</h2>
+<form id="examForm">
+  <label>Предмет: <input type="text" id="subject"></label><br><br>
+  <label>Начален час (напр. 09:30): <input type="time" id="startTime" step="60" lang="bg"></label><br><br>
+  <label>Продължителност (минути): <input type="number" id="duration"></label><br><br>
+  <label>Кабинет за резултати: <input type="text" id="room"></label><br><br>
+  <label>Час за резултати: <input type="time" id="resultTime" step="60"></label><br><br>
+  <label>Дата на резултатите (ДД.ММ.ГГГГ): <input type="text" id="resultDate" placeholder="напр. 14.09.2024"></label><br><br>
+  <button type="button" onclick="startExam()">Стартирай Таймера</button>
+</form>
+
+<hr>
+
+<h3>Предмет: <span id="showSubject"></span></h3>
+<h4>Текущо време: <span id="currentTime"></span></h4>
+<h4>Оставащо време: <span id="remainingTime"></span></h4>
+<p id="resultInfo"></p>
+
+<script>
+let intervalId;
+
+function startExam() {
+  clearInterval(intervalId);
+
+  const subject = document.getElementById("subject").value;
+  const startTimeStr = document.getElementById("startTime").value;
+  const durationMin = parseInt(document.getElementById("duration").value);
+  const room = document.getElementById("room").value;
+  const resultTime = document.getElementById("resultTime").value;
+  const resultDate = document.getElementById("resultDate").value;
+
+  if (!subject || !startTimeStr || isNaN(durationMin)) {
+    alert("Моля, попълнете всички полета за изпита.");
+    return;
+  }
+
+  document.getElementById("showSubject").textContent = subject;
+  document.getElementById("resultInfo").textContent =
+    `Резултатите ще бъдат обявени на ${resultDate} от ${resultTime} в кабинет ${room}`;
+
+  const now = new Date();
+  const [startHour, startMinute] = startTimeStr.split(":").map(Number);
+  const examStart = new Date(now.getFullYear(), now.getMonth(), now.getDate(), startHour, startMinute);
+  const examEnd = new Date(examStart.getTime() + durationMin * 60000);
+
+  function updateClock() {
+    const current = new Date();
+    document.getElementById("currentTime").textContent = current.toLocaleTimeString("bg-BG", { hour12: false });
+
+    const remaining = examEnd - current;
+    if (remaining <= 0) {
+      document.getElementById("remainingTime").textContent = "Изпитът приключи.";
+      document.getElementById("remainingTime").classList.remove("warning");
+      clearInterval(intervalId);
+      return;
+    }
+
+    const minLeft = Math.floor(remaining / 60000);
+    const secLeft = Math.floor((remaining % 60000) / 1000);
+    document.getElementById("remainingTime").textContent =
+      `${minLeft} мин. ${secLeft} сек. оставащи.`;
+
+    if (minLeft <= 30) {
+      document.getElementById("remainingTime").classList.add("warning");
+    } else {
+      document.getElementById("remainingTime").classList.remove("warning");
+    }
+  }
+
+  updateClock();
+  intervalId = setInterval(updateClock, 1000);
+}
+</script>
+
+</body>
+</html>
