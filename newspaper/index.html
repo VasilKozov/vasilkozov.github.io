@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Static PDF Reader</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      font-family: Arial, sans-serif;
+    }
+    #sidebar {
+      width: 250px;
+      background-color: #f1f1f1;
+      overflow-y: auto;
+      border-right: 1px solid #ccc;
+      transition: width 0.3s;
+    }
+    #sidebar.hidden {
+      width: 0;
+      overflow: hidden;
+    }
+    #search {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    #fileList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #fileList li {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    #fileList li:hover {
+      background-color: #ddd;
+    }
+    #main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    #toolbar {
+      background-color: #eee;
+      padding: 10px;
+      text-align: right;
+    }
+    #pdf-viewer {
+      flex: 1;
+      overflow: auto;
+    }
+    canvas {
+      margin: 0 auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <div id="search">
+      <input type="text" id="searchBox" placeholder="Search PDFs...">
+    </div>
+    <ul id="fileList"></ul>
+  </div>
+
+  <div id="main">
+    <div id="toolbar">
+      <button onclick="toggleSidebar()">Toggle List</button>
+      <button onclick="prevPage()">Previous</button>
+      <button onclick="nextPage()">Next</button>
+      <span>Page: <span id="pageNum">1</span> / <span id="pageCount">1</span></span>
+    </div>
+    <div id="pdf-viewer"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+  <script>
+    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js';
+
+    const sidebar = document.getElementById('sidebar');
+    const fileList = document.getElementById('fileList');
+    const searchBox = document.getElementById('searchBox');
+    const viewer = document.getElementById('pdf-viewer');
+    let currentPdf = null;
+    let currentPage = 1;
+    let totalPages = 0;
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('hidden');
+    }
+
+    function loadPdfList() {
+      fetch('pdfs.json')
+        .then(res => res.json())
+        .then(files => {
+          files.sort();
+          fileList.innerHTML = '';
+          files.forEach(file => {
+            const li = document.createElement('li');
+            li.textContent = file;
+            li.onclick = () => loadPdf(`pdfs/${file}`);
+            fileList.appendChild(li);
+          });
+        });
+    }
+
+    searchBox.addEventListener('input', () => {
+      const filter = searchBox.value.toLowerCase();
+      Array.from(fileList.children).forEach(li => {
+        li.style.display = li.textContent.toLowerCase().includes(filter) ? '' : 'none';
+      });
+    });
+
+    function loadPdf(url) {
+      pdfjsLib.getDocument(url).promise.then(pdfDoc => {
+        currentPdf = pdfDoc;
+        currentPage = 1;
+        totalPages = pdfDoc.numPages;
+        document.getElementById('pageCount').textContent = totalPages;
+        renderPages();
+      });
+    }
+
+    function renderPages() {
+      viewer.innerHTML = '';
+      for (let i = 0; i < 2; i++) {
+        const pageNumber = currentPage + i;
+        if (pageNumber <= totalPages) {
+          currentPdf.getPage(pageNumber).then(page => {
+            const viewport = page.getViewport({ scale: 1.5 });
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            page.render({ canvasContext: context, viewport: viewport });
+            viewer.appendChild(canvas);
+          });
+        }
+      }
+      document.getElementById('pageNum').textContent = currentPage;
+    }
+
+    function prevPage() {
+      if (currentPage > 1) {
+        currentPage -= 2;
+        if (currentPage < 1) currentPage = 1;
+        renderPages();
+      }
+    }
+
+    function nextPage() {
+      if (currentPage + 1 < totalPages) {
+        currentPage += 2;
+        renderPages();
+      }
+    }
+
+    loadPdfList();
+  </script>
+</body>
+</html>
