@@ -57,11 +57,15 @@
       justify-content: center;
       align-items: center;
       gap: 20px;
-      padding: 20px;
+      padding: 10px;
+      box-sizing: border-box;
+      max-width: 100%;
     }
+
     canvas {
-      margin: 0 auto;
-      display: block;
+      max-width: 48%; /* 48% x 2 + gap fits side-by-side */
+      height: auto;
+      box-shadow: 0 0 4px rgba(0,0,0,0.2);
     }
   </style>
 </head>
@@ -133,23 +137,37 @@
     }
 
     function renderPages() {
-      viewer.innerHTML = '';
-      for (let i = 0; i < 2; i++) {
-        const pageNumber = currentPage + i;
-        if (pageNumber <= totalPages) {
-          currentPdf.getPage(pageNumber).then(page => {
-            const viewport = page.getViewport({ scale: 1.5 });
-            const canvas = document.createElement('canvas');
-            const context = canvas.getContext('2d');
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-            page.render({ canvasContext: context, viewport: viewport });
-            viewer.appendChild(canvas);
-          });
-        }
-      }
-      document.getElementById('pageNum').textContent = currentPage;
+  viewer.innerHTML = '';
+
+  const viewerWidth = viewer.clientWidth;
+  const targetWidth = viewerWidth / 2 - 20; // for gap and padding
+  const promises = [];
+
+  for (let i = 0; i < 2; i++) {
+    const pageNumber = currentPage + i;
+    if (pageNumber <= totalPages) {
+      promises.push(
+        currentPdf.getPage(pageNumber).then(page => {
+          const unscaledViewport = page.getViewport({ scale: 1 });
+          const scale = targetWidth / unscaledViewport.width;
+          const viewport = page.getViewport({ scale });
+
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+
+          page.render({ canvasContext: context, viewport });
+          viewer.appendChild(canvas);
+        })
+      );
     }
+  }
+
+  Promise.all(promises).then(() => {
+    document.getElementById('pageNum').textContent = currentPage;
+  });
+}
 
     function prevPage() {
       if (currentPage > 1) {
