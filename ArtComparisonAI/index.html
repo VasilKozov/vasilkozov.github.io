@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI or Real Painting? Image Comparison Study</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section id="start-screen" class="screen active-screen">
+      <div class="card intro-card">
+        <p class="eyebrow">Image Perception Study</p>
+        <h1>AI or Real Painting?</h1>
+        <p class="intro-text">
+          You will see pairs of images. In each pair, one image is AI-generated and one is based on a real painting.
+          Your task is to choose which image you think is AI-generated.
+        </p>
+
+        <div class="instructions-box">
+          <h2>Instructions</h2>
+          <ol>
+            <li>Look carefully at both images.</li>
+            <li>Choose the image you believe is AI-generated.</li>
+            <li>Optionally select your confidence level.</li>
+            <li>Your response will be recorded anonymously using your participant code.</li>
+          </ol>
+        </div>
+
+        <form id="participant-form" class="participant-form">
+          <label for="participant-code">Participant code</label>
+          <input
+            id="participant-code"
+            name="participant-code"
+            type="text"
+            placeholder="Example: P001"
+            autocomplete="off"
+            required
+          />
+          <button type="submit" class="primary-button">Start comparison</button>
+        </form>
+
+        <p class="small-note">
+          Do not enter names, email addresses, or other personal data unless your research protocol requires it.
+        </p>
+      </div>
+    </section>
+
+    <section id="comparison-screen" class="screen">
+      <header class="top-bar">
+        <div>
+          <p class="eyebrow">Comparison</p>
+          <h1 id="progress-title">Pair 1 of 10</h1>
+        </div>
+        <div class="session-pill" id="session-pill">Session</div>
+      </header>
+
+      <div class="question-card">
+        <h2>Which image do you think is AI-generated?</h2>
+        <p class="question-subtitle">Click a button below the image to record your answer.</p>
+      </div>
+
+      <section class="image-grid" aria-label="Image comparison">
+        <article class="image-panel">
+          <div class="image-frame">
+            <img id="left-image" alt="Left comparison image" />
+          </div>
+          <button id="choose-left" class="choice-button" type="button">Choose left image</button>
+        </article>
+
+        <article class="image-panel">
+          <div class="image-frame">
+            <img id="right-image" alt="Right comparison image" />
+          </div>
+          <button id="choose-right" class="choice-button" type="button">Choose right image</button>
+        </article>
+      </section>
+
+      <section class="confidence-card" aria-label="Confidence rating">
+        <label for="confidence">Confidence level, optional</label>
+        <select id="confidence" name="confidence">
+          <option value="">No confidence rating</option>
+          <option value="1">1 - Very unsure</option>
+          <option value="2">2 - Unsure</option>
+          <option value="3">3 - Neutral</option>
+          <option value="4">4 - Confident</option>
+          <option value="5">5 - Very confident</option>
+        </select>
+      </section>
+
+      <p id="save-status" class="save-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="end-screen" class="screen">
+      <div class="card end-card">
+        <p class="eyebrow">Finished</p>
+        <h1>Thank you for participating.</h1>
+        <p id="final-message" class="intro-text">
+          Your responses have been recorded.
+        </p>
+        <div class="summary-box">
+          <p><strong>Completed comparisons:</strong> <span id="completed-count">0</span></p>
+          <p><strong>Correct answers:</strong> <span id="correct-count">0</span></p>
+        </div>
+        <button id="restart-button" class="secondary-button" type="button">Restart for another participant</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
