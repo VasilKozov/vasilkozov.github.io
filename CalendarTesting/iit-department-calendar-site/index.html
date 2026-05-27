@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Катедра ИИТ - Годишен календар на дейностите</title>
+  <meta name="description" content="Интерактивен годишен календар, архив и отчетна хронология на катедра Информатика и информационни технологии, Русенски университет." />
+  <link rel="stylesheet" href="assets/style.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="eyebrow">Русенски университет „Ангел Кънчев“</p>
+      <h1>Годишен календар и архив на катедра ИИТ</h1>
+      <p class="lead">
+        Интерактивна хронология на събития, научна дейност, студентски участия, публикации,
+        партньорства и публични изяви на катедра „Информатика и информационни технологии“.
+      </p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="#calendar">Разгледай календара</a>
+        <a class="button button--ghost" href="data/events.xlsx">Изтегли Excel източника</a>
+      </div>
+    </div>
+
+    <div class="hero__road" aria-hidden="true">
+      <div class="roadline roadline--top">
+        <span class="road-icon">🚀</span><span></span><span></span><span></span><span class="bend bend--right"></span>
+      </div>
+      <div class="roadline roadline--middle">
+        <span class="bend bend--left"></span><span></span><span>🔎</span><span></span><span>✉️</span>
+      </div>
+      <div class="roadline roadline--bottom">
+        <span>⭐</span><span></span><span></span><span>🔒</span><span>⚙️</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section intro">
+      <div>
+        <h2>За какво служи?</h2>
+        <p>
+          Сайтът съчетава публичен календар, архив на доказателства и отчетна база данни.
+          Основният източник е Excel файл с отделен лист за всяка година. Когато обновите
+          <code>data/events.xlsx</code>, страницата автоматично зарежда новите данни.
+        </p>
+      </div>
+      <div class="notice">
+        <strong>Работен прототип</strong>
+        <span>Първоначалните записи са попълнени от индексирани откъси от Facebook страницата на катедрата. Редовете със статус „verify“ трябва да се допълнят след ръчна проверка на пълния пост.</span>
+      </div>
+    </section>
+
+    <section id="calendar" class="section app-shell">
+      <div class="toolbar">
+        <div>
+          <p class="eyebrow">Интерактивен архив</p>
+          <h2>Календар по години</h2>
+        </div>
+        <div class="toolbar__tools">
+          <label>
+            Търсене
+            <input id="searchInput" type="search" placeholder="напр. олимпиада, Huawei, дипломи..." />
+          </label>
+          <label>
+            Категория
+            <select id="categoryFilter">
+              <option value="all">Всички категории</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <nav id="yearTabs" class="tabs" aria-label="Избор на година"></nav>
+
+      <div id="status" class="status">Зареждане на Excel източника...</div>
+
+      <div id="stats" class="stats" aria-live="polite"></div>
+
+      <div class="view-switcher" role="tablist" aria-label="Избор на визуализация">
+        <button class="view-button is-active" data-view="roadmap">Годишна пътека</button>
+        <button class="view-button" data-view="cards">Карти</button>
+        <button class="view-button" data-view="report">Отчетна таблица</button>
+      </div>
+
+      <section id="roadmapView" class="view view--active">
+        <div id="roadmap" class="roadmap"></div>
+      </section>
+
+      <section id="cardsView" class="view">
+        <div id="eventCards" class="cards"></div>
+      </section>
+
+      <section id="reportView" class="view">
+        <div class="report-actions">
+          <button id="copyReportBtn" class="button button--small">Копирай отчетната таблица</button>
+          <button onclick="window.print()" class="button button--small button--ghost-dark">Печат / PDF</button>
+        </div>
+        <div class="table-wrap">
+          <table id="reportTable">
+            <thead>
+              <tr>
+                <th>Дата</th>
+                <th>Категория</th>
+                <th>Събитие</th>
+                <th>Участници</th>
+                <th>Описание</th>
+                <th>Източник</th>
+                <th>Отчетна бележка</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="eventDialog" class="event-dialog">
+    <form method="dialog">
+      <button class="dialog-close" aria-label="Затвори">×</button>
+    </form>
+    <div id="dialogContent"></div>
+  </dialog>
+
+  <footer class="footer">
+    <p>Катедра „Информатика и информационни технологии“ - примерен GitHub Pages прототип.</p>
+    <p>Източник на данни: <a href="data/events.xlsx">data/events.xlsx</a></p>
+  </footer>
+</body>
+</html>
