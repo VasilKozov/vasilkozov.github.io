@@ -184,3 +184,57 @@ Possible later additions:
 - Add CSV export instructions.
 - Add different groups of image comparisons.
 - Add Bulgarian translation of the interface.
+
+
+## Current image set included in this update
+
+This updated package contains 36 image files, organized into 18 comparison pairs. The image files are placed in the lowercase folder:
+
+`images/`
+
+The filenames themselves have not been changed. This matters because several images begin with the same number, so the website distinguishes them using the full filename and a unique `pairId` in `app.js`.
+
+The pairing rule used in this version is:
+
+- files containing `(Original)` are the real/original paintings;
+- files containing `(GPT Image 2)` are the AI-generated comparison images;
+- pairs are matched by the leading number and artist name.
+
+The current experiment contains these 18 pair IDs:
+
+```text
+pair01_paul_klee
+pair01_sonia_delaunay
+pair01_fernand_leger
+pair02_sonia_delaunay
+pair02_fernand_leger
+pair02_francis_bacon
+pair03_egon_schiele
+pair04_chaim_soutine
+pair05_chaim_soutine
+pair06_chaim_soutine
+pair07_giorgio_morandi
+pair08_giorgio_morandi
+pair09_vilhelm_hammershoi
+pair10_vilhelm_hammershoi
+pair11_joaquim_sunyer
+pair12_joaquim_sunyer
+pair13_kandinsky
+pair14_kandinsky
+```
+
+## Updating your existing GitHub Pages repository
+
+To update your already hosted website:
+
+1. Replace your existing `app.js` with the updated `app.js` from this package.
+2. Keep your existing `index.html`, `style.css`, and `google_apps_script.js` unless you intentionally changed them. They do not need structural changes for this image update.
+3. Upload the `images` folder to the root of the repository, next to `index.html`.
+4. Make sure the folder name is exactly lowercase `images`, because `app.js` uses paths such as `images/1. Paul Klee - Senecio (Original).jpg`.
+5. Commit/push the changes. GitHub Pages should update automatically after a short delay.
+6. Open the site and test with a participant code such as `TEST001`.
+7. Complete a few comparisons and verify that the Google Sheet receives rows with the correct `pairId`, `leftImage`, `rightImage`, `correctSide`, and `userChoice`.
+
+## Important note about filenames
+
+Do not rename the image files unless you also update `app.js`. Spaces, accented characters, and parentheses are handled by the website using `encodeURI(...)` when loading the image paths. The readable original path is still stored in Google Sheets.

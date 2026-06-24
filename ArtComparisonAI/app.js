@@ -12,38 +12,106 @@ const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3nBka0BzTM4
 /*
   Image pair configuration.
 
-  Naming recommendation:
-  images/pair01_real.jpg
-  images/pair01_ai.jpg
-  images/pair02_real.jpg
-  images/pair02_ai.jpg
+  This version uses the exact filenames from the uploaded image directory.
+  The images are expected to be inside a lowercase /images folder in the GitHub repository.
 
-  The file names are not shown to participants.
-  Keep the id stable because it will be stored in the Google Sheet.
+  File names are intentionally preserved because several files start with the same number.
+  Pair IDs combine the displayed pair number and artist name so the Google Sheet stays unambiguous.
+
+  Files containing "(Original)" are treated as real/original paintings.
+  Files containing "(GPT Image 2)" are treated as AI-generated comparison images.
 */
 const comparisons = [
   {
-    id: "pair01",
-    real: "images/pair01_real.jpg",
-    ai: "images/pair01_ai.jpg"
+    id: "pair01_paul_klee",
+    real: "images/1. Paul Klee - Senecio (Original).jpg",
+    ai: "images/1. Paul Klee - The Dreaming Musician (GPT Image 2).png"
   },
   {
-    id: "pair02",
-    real: "images/pair02_real.jpg",
-    ai: "images/pair02_ai.jpg"
+    id: "pair01_sonia_delaunay",
+    real: "images/1. Sonia Delaunay - Colored Rhythm (Original).jpg",
+    ai: "images/1. Sonia Delaunay - Light Fugue (GPT Image 2).png"
   },
   {
-    id: "pair03",
-    real: "images/pair03_real.jpg",
-    ai: "images/pair03_ai.jpg"
+    id: "pair01_fernand_leger",
+    real: "images/1. Fernand Léger - Three Women (Original).jpg",
+    ai: "images/1. Fernand Léger - Musicians in the Studio (GPT Image 2).png"
+  },
+  {
+    id: "pair02_sonia_delaunay",
+    real: "images/2. Sonia Delaunay - Prismes électriques (Original).jpg",
+    ai: "images/2. Sonia Delaunay - Nocturne Chromatique (GPT Image 2).png"
+  },
+  {
+    id: "pair02_fernand_leger",
+    real: "images/2. Fernand Léger - The city (Original).jpg",
+    ai: "images/2. Fernand Léger - Metro Entrance (GPT Image 2).png"
+  },
+  {
+    id: "pair02_francis_bacon",
+    real: "images/2. Francis Bacon - Study for Chimpanzee (Original).jpg",
+    ai: "images/2. Francis Bacon - Seated Figure (GPT Image 2).png"
+  },
+  {
+    id: "pair03_egon_schiele",
+    real: "images/3. Egon Schiele - Portrait of an Old Man (Johann Harms) (Original).jpg",
+    ai: "images/3. Egon Schiele - Young Seamstress (GPT Image 2).png"
+  },
+  {
+    id: "pair04_chaim_soutine",
+    real: "images/4. Chaim Soutine - Portrait of Maria Lani (Original).jpg",
+    ai: "images/4. Chaim Soutine - Young Violinist (GPT Image 2).png"
+  },
+  {
+    id: "pair05_chaim_soutine",
+    real: "images/5. Chaïm Soutine - Paysage (Original).jpg",
+    ai: "images/5. Chaïm Soutine - Riverside Farm (GPT Image 2).png"
+  },
+  {
+    id: "pair06_chaim_soutine",
+    real: "images/6. Chaïm Soutine - La Maison Blanche (Original).jpg",
+    ai: "images/6. Chaïm Soutine - The Red Farm on the Hillside (GPT Image 2).png"
+  },
+  {
+    id: "pair07_giorgio_morandi",
+    real: "images/7. Giorgio Morandi - Naturaleza Muerta (Original).png",
+    ai: "images/7. Giorgio Morandi - Objects on a Grey Shelf (GPT Image 2).png"
+  },
+  {
+    id: "pair08_giorgio_morandi",
+    real: "images/8. Giorgio Morandi - Flores (Original).jpg",
+    ai: "images/8. Giorgio Morandi - Dried Flowers in a Grey Vase (GPT Image 2).png"
+  },
+  {
+    id: "pair09_vilhelm_hammershoi",
+    real: "images/9. Vilhelm Hammershoi - Interior, Sunlight on the Floor (Original).jpg",
+    ai: "images/9. Vilhelm Hammershøi - Light from the Adjacent Room (GPT Image 2).png"
+  },
+  {
+    id: "pair10_vilhelm_hammershoi",
+    real: "images/10. Vilhelm Hammershoi - Dos figuras frente a la ventana (Original).png",
+    ai: "images/10. Vilhelm Hammershøi - Woman by the Open Door (GPT Image 2).png"
+  },
+  {
+    id: "pair11_joaquim_sunyer",
+    real: "images/11. Joaquim Sunyer - Paisaje de Céret (Original).jpg",
+    ai: "images/11. Joaquim Sunyer - Terraced Gardens Above the Valley (GPT Image 2).png"
+  },
+  {
+    id: "pair12_joaquim_sunyer",
+    real: "images/12. Joaquim Sunyer - Cala Forn (Original).jpg",
+    ai: "images/12. Joaquim Sunyer - Fig Gatherers at Dusk (GPT Image 2).png"
+  },
+  {
+    id: "pair13_kandinsky",
+    real: "images/13. Vassily Kandinsky - Casas de Munich (Original).jpg",
+    ai: "images/13. Wassily Kandinsky - The Blue Tower Square (GPT Image 2).png"
+  },
+  {
+    id: "pair14_kandinsky",
+    real: "images/14. Vasily Kandinsky - Pond in the Park (Original).jpg",
+    ai: "images/14. Vassily Kandinsky - The Red Slope (GPT Image 2).png"
   }
-
-  // Add more pairs here:
-  // ,{
-  //   id: "pair04",
-  //   real: "images/pair04_real.jpg",
-  //   ai: "images/pair04_ai.jpg"
-  // }
 ];
 
 const startScreen = document.getElementById("start-screen");
@@ -130,8 +198,9 @@ function loadCurrentComparison() {
   };
 
   progressTitle.textContent = `Pair ${currentIndex + 1} of ${randomizedComparisons.length}`;
-  leftImage.src = currentLayout.leftImage;
-  rightImage.src = currentLayout.rightImage;
+  // encodeURI keeps the original filename readable in the code/Sheet while safely loading spaces, accents, and parentheses in URLs.
+  leftImage.src = encodeURI(currentLayout.leftImage);
+  rightImage.src = encodeURI(currentLayout.rightImage);
   confidenceSelect.value = "";
   saveStatus.textContent = "";
   saveStatus.className = "save-status";
