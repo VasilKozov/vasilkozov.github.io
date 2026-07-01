@@ -1,23 +1,72 @@
 <!DOCTYPE html>
-<html>
-<body>
-<h1>Showcase</h1>
-<div>
-	<!-- <a href="home.html"> Testing area </a>
-	<br /> -->
-	<a href="https://curriculumvitaevasilkozov.azurewebsites.net/"> Animate css example </a>
-	<br />
-	<a href="gameOne/index.html"> Game 1 </a>
-	<br />
-	<a href="gameTwo/index.html"> Game 2 </a>
-	<br />
-	<a href="StoryShowcase/template_page_1.html"> Story Showcase </a>
-	<br />
-	<a href="AnalysingBusiness/index.html"> Analysing Business Process Diagrams </a>
-	<br />
-	<a href="ArtificialIntelligence/index.html"> Artificial Intelligence helper materials</a>
-	<br />
-	<a href="timer.html"> Exam Timer</a> 
-</div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Showcase</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+  <header class="max-w-5xl mx-auto text-center mb-10">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Showcase</h1>
+    <p class="text-gray-700 max-w-3xl mx-auto">
+      A collection of projects, examples, games, teaching materials and useful tools.
+    </p>
+  </header>
+
+  <main class="max-w-6xl mx-auto">
+    <!-- Category: Personal and Project Showcase -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4">Personal and Project Showcase</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://curriculumvitaevasilkozov.azurewebsites.net/" target="_blank" rel="noopener noreferrer" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <h3 class="text-xl font-semibold mb-2">Animate CSS Example</h3>
+          <p class="text-gray-700">Personal CV/demo page showcasing animation effects and presentation styling.</p>
+        </a>
+
+        <a href="StoryShowcase/template_page_1.html" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <h3 class="text-xl font-semibold mb-2">Story Showcase</h3>
+          <p class="text-gray-700">A visual storytelling page template for presenting narrative or educational content.</p>
+        </a>
+
+        <a href="AnalysingBusiness/index.html" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <h3 class="text-xl font-semibold mb-2">Analysing Business Process Diagrams</h3>
+          <p class="text-gray-700">Materials and examples related to analysing business process diagrams.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Category: Games -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4">Games</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="gameOne/index.html" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <h3 class="text-xl font-semibold mb-2">Game 1</h3>
+          <p class="text-gray-700">Open the first game project from the showcase collection.</p>
+        </a>
+
+        <a href="gameTwo/index.html" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <h3 class="text-xl font-semibold mb-2">Game 2</h3>
+          <p class="text-gray-700">Open the second game project from the showcase collection.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Category: Teaching and Tools -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4">Teaching Materials and Tools</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="ArtificialIntelligence/index.html" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <h3 class="text-xl font-semibold mb-2">Artificial Intelligence Helper Materials</h3>
+          <p class="text-gray-700">Curated AI learning resources, interactive demonstrations and supplementary materials.</p>
+        </a>
+
+        <a href="timer.html" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <h3 class="text-xl font-semibold mb-2">Exam Timer</h3>
+          <p class="text-gray-700">A simple timer tool for exams, classroom tasks and timed activities.</p>
+        </a>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
