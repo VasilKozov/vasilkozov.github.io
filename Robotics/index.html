@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robotics and AI Showcase Resources</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 p-6 md:p-8">
+  <main class="max-w-7xl mx-auto">
+    <header class="text-center mb-10">
+      <p class="text-sm uppercase tracking-widest text-gray-500 mb-2">Student showcase / Демонстрационна страница</p>
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">Robotics + AI: Practical Uses / Роботика + ИИ: практически приложения</h1>
+      <p class="max-w-4xl mx-auto text-gray-700 text-lg">Curated examples of real hospital robots, medical automation, surgical systems, assistive robots, LLM-based robotics, and simulation tools. The focus is on practical, useful, and visually interesting resources that students can explore.</p>
+      <p class="max-w-4xl mx-auto text-gray-600 mt-3 text-sm">Note: commercial availability and medical approval depend on country, hospital policy, and regulatory status. Use these links as educational resources, not as medical recommendations.</p>
+    </header>
+
+    <nav class="flex flex-wrap justify-center gap-2 mb-10">
+      <a href="#hospital" class="px-4 py-2 rounded-full bg-white shadow hover:shadow-md transition text-sm">Hospital logistics</a>
+      <a href="#cleaning" class="px-4 py-2 rounded-full bg-white shadow hover:shadow-md transition text-sm">Cleaning & disinfection</a>
+      <a href="#surgery" class="px-4 py-2 rounded-full bg-white shadow hover:shadow-md transition text-sm">Surgery</a>
+      <a href="#pharmacy" class="px-4 py-2 rounded-full bg-white shadow hover:shadow-md transition text-sm">Medication</a>
+      <a href="#rehab" class="px-4 py-2 rounded-full bg-white shadow hover:shadow-md transition text-sm">Rehabilitation</a>
+      <a href="#llm" class="px-4 py-2 rounded-full bg-white shadow hover:shadow-md transition text-sm">LLMs + robots</a>
+      <a href="#simulation" class="px-4 py-2 rounded-full bg-white shadow hover:shadow-md transition text-sm">Simulation</a>
+    </nav>
+
+    <section class="mb-12">
+      <div class="bg-white shadow-md rounded-xl p-6 border border-gray-200">
+        <h2 class="text-2xl font-semibold mb-3">How to use this page in class / Как да се използва в час</h2>
+        <p class="text-gray-700 mb-4">A good classroom flow is: start with robots already working in hospitals, then show surgery and pharmacy automation, then move to research projects where LLMs connect language, perception, planning, and robot actions.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+          <div class="rounded-lg bg-gray-50 p-4"><strong>1. Practical task:</strong> What real human workload does the robot reduce?</div>
+          <div class="rounded-lg bg-gray-50 p-4"><strong>2. AI component:</strong> Is it navigation, perception, planning, language, or control?</div>
+          <div class="rounded-lg bg-gray-50 p-4"><strong>3. Safety question:</strong> What happens if it fails in a hospital environment?</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hospital" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 mt-10">Hospital Logistics and Service Robots / Болнична логистика и обслужващи роботи</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://www.diligentrobots.com/moxi" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Real hospital use</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Mobile manipulation</span></div>
+          <h3 class="text-xl font-semibold mb-2">Moxi — Diligent Robotics</h3>
+          <p>Hospital assistant robot for non-patient-facing tasks: supplies, PPE, lab samples, central supply items, and medication delivery.</p>
+          <p class="mt-1 text-sm text-gray-600">Робот помощник в болници, който освобождава персонала от обикаляне за материали, проби и лекарства.</p>
+        </a>
+        <a href="https://aethon.com/products/tug/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Hospital transport</span><span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">AMR</span></div>
+          <h3 class="text-xl font-semibold mb-2">TUG — Aethon</h3>
+          <p>Autonomous mobile robot used for moving medications, linens, meals, lab samples, and other hospital materials.</p>
+          <p class="mt-1 text-sm text-gray-600">Автономен мобилен робот за вътрешна болнична логистика и доставки между отделения.</p>
+        </a>
+        <a href="https://www.swisslog-healthcare.com/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Hospital infrastructure</span><span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">Logistics</span></div>
+          <h3 class="text-xl font-semibold mb-2">Swisslog Healthcare</h3>
+          <p>Hospital transport automation: pneumatic tube systems, medication management, and logistics workflows for samples and supplies.</p>
+          <p class="mt-1 text-sm text-gray-600">Инфраструктурна автоматизация за транспорт на проби, лекарства и материали в болнична среда.</p>
+        </a>
+        <a href="https://www.mobile-industrial-robots.com/industries/healthcare" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">AMR fleet</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Navigation</span></div>
+          <h3 class="text-xl font-semibold mb-2">MiR Robots for Healthcare</h3>
+          <p>Autonomous mobile robots that can be adapted for repetitive internal transport tasks in hospitals and laboratories.</p>
+          <p class="mt-1 text-sm text-gray-600">Мобилни роботи за повтарящи се логистични задачи в здравни и лабораторни пространства.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="cleaning" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 mt-10">Cleaning, Disinfection and Infection Control / Почистване, дезинфекция и контрол на инфекции</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://uvd.blue-ocean-robotics.com/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Commercial</span><span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">UV-C</span></div>
+          <h3 class="text-xl font-semibold mb-2">UVD Robots — Blue Ocean Robotics</h3>
+          <p>Self-driving UV-C disinfection robot for environmental surfaces in facilities, public spaces, pharma, and healthcare-adjacent settings.</p>
+          <p class="mt-1 text-sm text-gray-600">Самонавигационен UV-C робот за дезинфекция на помещения и повърхности.</p>
+        </a>
+        <a href="https://www.xenex.com/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Commercial</span><span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Pulsed xenon UV</span></div>
+          <h3 class="text-xl font-semibold mb-2">Xenex LightStrike</h3>
+          <p>UV disinfection robot platform used as an additional layer of hospital room disinfection and infection-control workflow.</p>
+          <p class="mt-1 text-sm text-gray-600">Платформа за UV дезинфекция, подходяща за дискусия за автоматизирано почистване в болници.</p>
+        </a>
+        <a href="https://arxiv.org/abs/2511.18709" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Research</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Foundation models</span></div>
+          <h3 class="text-xl font-semibold mb-2">VLM-Assisted UV Surface Selection</h3>
+          <p>Research example using foundation models to select surfaces for robot UV disinfection, reducing manual setup and improving scene understanding.</p>
+          <p class="mt-1 text-sm text-gray-600">Пример как визуално-езикови модели могат да помагат на робот да избере какво да дезинфекцира.</p>
+        </a>
+        <a href="https://arxiv.org/abs/2104.10739" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Research</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Mobile manipulator</span></div>
+          <h3 class="text-xl font-semibold mb-2">Mobile Manipulation UV Disinfection</h3>
+          <p>Research prototype where a mobile manipulator plans end-effector UV trajectories over selected surfaces.</p>
+          <p class="mt-1 text-sm text-gray-600">Добър пример за съчетаване на мобилна платформа, роботизирана ръка и планиране на движение.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="surgery" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 mt-10">Surgical and Interventional Robotics / Хирургична и интервенционална роботика</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://www.intuitive.com/en-us/products-and-services/da-vinci" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Operating room</span><span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Minimally invasive</span></div>
+          <h3 class="text-xl font-semibold mb-2">da Vinci — Intuitive</h3>
+          <p>Robotic-assisted surgery ecosystem for minimally invasive procedures, surgeon console control, instruments, imaging, training, and analytics.</p>
+          <p class="mt-1 text-sm text-gray-600">Един от най-познатите примери за робот-асистирана хирургия.</p>
+        </a>
+        <a href="https://www.intuitive.com/en-us/products-and-services/ion" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Clinical</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Robotic bronchoscopy</span></div>
+          <h3 class="text-xl font-semibold mb-2">Ion — Robotic Bronchoscopy</h3>
+          <p>Robotic-assisted bronchoscopy platform designed to help navigate to small lung nodules for biopsy workflows.</p>
+          <p class="mt-1 text-sm text-gray-600">Подходящ пример за навигация в сложна анатомична среда.</p>
+        </a>
+        <a href="https://www.stryker.com/us/en/joint-replacement/systems/Mako_SmartRobotics_Overview.html" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Orthopedics</span><span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">Haptics</span></div>
+          <h3 class="text-xl font-semibold mb-2">Mako SmartRobotics — Stryker</h3>
+          <p>Robotic-arm assisted system for joint replacement workflows using 3D planning and haptic boundaries.</p>
+          <p class="mt-1 text-sm text-gray-600">Добър пример за 3D планиране, насочване и хаптични ограничения при операция.</p>
+        </a>
+        <a href="https://www.zimmerbiomet.com/en/products-and-solutions/zb-edge/robotics.html" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Orthopedics + neurosurgery</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Navigation</span></div>
+          <h3 class="text-xl font-semibold mb-2">ROSA Robotics — Zimmer Biomet</h3>
+          <p>Robotic platform family for knee, hip, shoulder, and neurosurgical planning and assistance.</p>
+          <p class="mt-1 text-sm text-gray-600">Пример за данни, навигация и роботизирана помощ при различни хирургични приложения.</p>
+        </a>
+        <a href="https://www.accuray.com/treatment-delivery/cyberknife/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Radiotherapy</span><span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Robotic arm</span></div>
+          <h3 class="text-xl font-semibold mb-2">CyberKnife — Accuray</h3>
+          <p>Robotic radiosurgery/radiotherapy system that combines imaging, targeting, and a robotic arm for precise radiation delivery.</p>
+          <p class="mt-1 text-sm text-gray-600">Интересен пример, защото роботът не „реже“, а насочва лъчение.</p>
+        </a>
+        <a href="https://www.cmrsurgical.com/versius/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Surgery</span><span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">Modular arms</span></div>
+          <h3 class="text-xl font-semibold mb-2">Versius — CMR Surgical</h3>
+          <p>Modular surgical robotic system that can be discussed as an alternative design philosophy to large integrated surgical robots.</p>
+          <p class="mt-1 text-sm text-gray-600">Полезен пример за сравнение на различни архитектури на хирургични роботи.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="pharmacy" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 mt-10">Medication, Pharmacy and Inventory Automation / Лекарства, аптека и автоматизация на наличности</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://www.omnicell.com/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Hospital pharmacy</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Inventory</span></div>
+          <h3 class="text-xl font-semibold mb-2">Omnicell Medication Management</h3>
+          <p>Automated medication and supply management systems for hospitals, including dispensing, inventory, and pharmacy workflows.</p>
+          <p class="mt-1 text-sm text-gray-600">Автоматизирано управление на лекарства и материали, с проследяване и контрол на достъпа.</p>
+        </a>
+        <a href="https://www.bd.com/en-us/products-and-solutions/products/product-families/bd-pyxis-medication-technologies" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Medication dispensing</span><span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">Tracking</span></div>
+          <h3 class="text-xl font-semibold mb-2">BD Pyxis Medication Technologies</h3>
+          <p>Automated medication dispensing and tracking systems used in hospitals to manage access, inventory, and documentation.</p>
+          <p class="mt-1 text-sm text-gray-600">Добър пример за „невидима“ болнична автоматизация с голям ефект върху безопасността.</p>
+        </a>
+        <a href="https://www.swisslog-healthcare.com/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Central pharmacy</span><span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Packaging</span></div>
+          <h3 class="text-xl font-semibold mb-2">Swisslog PillPick / TheraPick</h3>
+          <p>Pharmacy automation for unit-dose packaging, storage, picking, and patient-specific medication workflows.</p>
+          <p class="mt-1 text-sm text-gray-600">Автоматизирано пакетиране и подготовка на лекарства за конкретни пациенти.</p>
+        </a>
+        <a href="https://www.arxium.com/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Pharmacy robotics</span><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Compounding</span></div>
+          <h3 class="text-xl font-semibold mb-2">ARxIUM Pharmacy Automation</h3>
+          <p>Automation systems for pharmacy workflows, including IV compounding and medication preparation use cases.</p>
+          <p class="mt-1 text-sm text-gray-600">Подходящо за обсъждане на точност, стерилност и контрол на грешки при лекарства.</p>
+        </a>
+        <a href="https://www.medacube.com/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Patient support</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Adherence</span></div>
+          <h3 class="text-xl font-semibold mb-2">MedaCube Automated Pill Dispenser</h3>
+          <p>Home/patient medication dispenser for scheduled doses, reminders, and adherence monitoring.</p>
+          <p class="mt-1 text-sm text-gray-600">Пример за проследяване на прием на лекарства извън болницата.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="rehab" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 mt-10">Rehabilitation, Assistive and Patient-Facing Robots / Рехабилитационни, асистиращи и пациентски роботи</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://www.hocoma.com/us/solutions/lokomat/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Rehabilitation</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Gait training</span></div>
+          <h3 class="text-xl font-semibold mb-2">Lokomat — Hocoma</h3>
+          <p>Robot-assisted gait rehabilitation system for intensive, repetitive walking therapy with feedback and adjustable support.</p>
+          <p class="mt-1 text-sm text-gray-600">Роботизирана рехабилитация за ходене, подходяща за теми като биомеханика и обратна връзка.</p>
+        </a>
+        <a href="https://eksobionics.com/eksonr/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Exoskeleton</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Neurorehab</span></div>
+          <h3 class="text-xl font-semibold mb-2">EksoNR — Ekso Bionics</h3>
+          <p>Robotic exoskeleton for rehabilitation settings, helping patients stand and walk during therapy sessions.</p>
+          <p class="mt-1 text-sm text-gray-600">Добър пример за носим робот, който взаимодейства директно с човешкото тяло.</p>
+        </a>
+        <a href="https://www.cyberdyne.jp/english/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assistive</span><span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Bio-signals</span></div>
+          <h3 class="text-xl font-semibold mb-2">HAL — Cyberdyne</h3>
+          <p>Hybrid Assistive Limb exoskeleton concept using bioelectric signals to support movement and rehabilitation.</p>
+          <p class="mt-1 text-sm text-gray-600">Интересен пример за връзка между нервна система, сензори и роботизирано подпомагане.</p>
+        </a>
+        <a href="https://www.parorobots.com/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Therapy</span><span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">Social robot</span></div>
+          <h3 class="text-xl font-semibold mb-2">PARO Therapeutic Robot</h3>
+          <p>Therapeutic robotic seal used in care settings, especially as a conversation starter about social robots and ethics.</p>
+          <p class="mt-1 text-sm text-gray-600">Подходящ ресурс за дискусия за социални роботи, деменция, етика и емоционална подкрепа.</p>
+        </a>
+        <a href="https://labradorsystems.com/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assistive home robot</span><span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">Practical tasks</span></div>
+          <h3 class="text-xl font-semibold mb-2">Labrador Retriever Robot</h3>
+          <p>Assistive mobile robot designed to help people carry objects around the home, especially for mobility support.</p>
+          <p class="mt-1 text-sm text-gray-600">Добър пример за полезен робот без фантастичен дизайн — фокус върху реална ежедневна задача.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="llm" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 mt-10">LLMs, Foundation Models and Robotics / Езикови модели, foundation models и роботика</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://deepmind.google/blog/gemini-robotics-brings-ai-into-the-physical-world/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Frontier research</span><span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">VLA</span></div>
+          <h3 class="text-xl font-semibold mb-2">Gemini Robotics — Google DeepMind</h3>
+          <p>Vision-language-action model direction where multimodal AI is extended from text/image understanding into physical robot actions.</p>
+          <p class="mt-1 text-sm text-gray-600">Много подходящ пример за преход от „чатбот“ към робот, който вижда, планира и действа.</p>
+        </a>
+        <a href="https://deepmind.google/blog/rt-2-new-model-translates-vision-and-language-into-action/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Research</span><span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">VLA</span></div>
+          <h3 class="text-xl font-semibold mb-2">RT-2 — Robotic Transformer 2</h3>
+          <p>Google DeepMind model that translates vision and language into robot actions, showing generalization beyond narrow robot datasets.</p>
+          <p class="mt-1 text-sm text-gray-600">Един от най-добрите ресурси за обяснение как знание от интернет може да се използва за роботизирано действие.</p>
+        </a>
+        <a href="https://say-can.github.io/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Research</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Planning</span></div>
+          <h3 class="text-xl font-semibold mb-2">SayCan — Language + Affordances</h3>
+          <p>Classic LLM-for-robotics project: the language model proposes what is useful, while robot affordances decide what is physically possible.</p>
+          <p class="mt-1 text-sm text-gray-600">Много добра концепция за студенти: „не прави каквото казвам, а каквото можеш безопасно да направиш“.</p>
+        </a>
+        <a href="https://openvla.github.io/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Open source</span><span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">VLA</span></div>
+          <h3 class="text-xl font-semibold mb-2">OpenVLA</h3>
+          <p>Open-source vision-language-action model trained on robot demonstrations, useful for understanding modern robot policies.</p>
+          <p class="mt-1 text-sm text-gray-600">Практичен ресурс за връзката между изображения, езикови инструкции и действия на робот.</p>
+        </a>
+        <a href="https://github.com/nasa-jpl/rosa" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Open source</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">ROS agent</span></div>
+          <h3 class="text-xl font-semibold mb-2">ROSA — Robot Operating System Agent</h3>
+          <p>AI agent that interacts with ROS1/ROS2 systems through natural language to inspect, diagnose, understand, and operate robots.</p>
+          <p class="mt-1 text-sm text-gray-600">Много близко до реална студентска демонстрация: LLM + ROS + симулация/реален робот.</p>
+        </a>
+        <a href="https://huggingface.co/docs/lerobot/index" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Open source</span><span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">Robot learning</span></div>
+          <h3 class="text-xl font-semibold mb-2">LeRobot — Hugging Face</h3>
+          <p>Open-source framework with datasets, policies, tutorials, simulation, and real-world robot learning workflows.</p>
+          <p class="mt-1 text-sm text-gray-600">Добра отправна точка за евтини роботи, имитационно обучение и събиране на демонстрации.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="simulation" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 mt-10">Simulation, Digital Twins and Training / Симулация, дигитални двойници и обучение</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://developer.nvidia.com/isaac/sim" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Simulation</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Synthetic data</span></div>
+          <h3 class="text-xl font-semibold mb-2">NVIDIA Isaac Sim</h3>
+          <p>Robotics simulation framework for testing, synthetic data generation, physics-based virtual environments, and robot learning.</p>
+          <p class="mt-1 text-sm text-gray-600">Много добър ресурс за симулация преди реален робот и за генериране на обучителни данни.</p>
+        </a>
+        <a href="https://gazebosim.org/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Simulation</span><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Open source</span></div>
+          <h3 class="text-xl font-semibold mb-2">Gazebo</h3>
+          <p>Open-source robot simulator often used with ROS for sensors, robot models, worlds, and control experiments.</p>
+          <p class="mt-1 text-sm text-gray-600">Класически инструмент за обучение по ROS и роботизирани системи.</p>
+        </a>
+        <a href="https://mujoco.org/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Physics</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">RL</span></div>
+          <h3 class="text-xl font-semibold mb-2">MuJoCo</h3>
+          <p>Physics simulator widely used for reinforcement learning, continuous control, locomotion, manipulation, and robot policy research.</p>
+          <p class="mt-1 text-sm text-gray-600">Подходящо за връзката между машинно обучение, физика и управление.</p>
+        </a>
+        <a href="https://cyberbotics.com/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Education</span><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Open source</span></div>
+          <h3 class="text-xl font-semibold mb-2">Webots</h3>
+          <p>Robot simulation environment with many ready-made robot models, useful for student projects and quick demonstrations.</p>
+          <p class="mt-1 text-sm text-gray-600">Подходящо за по-бързи студентски упражнения и визуални демонстрации.</p>
+        </a>
+        <a href="https://robotbenchmark.net/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Browser demos</span><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Student friendly</span></div>
+          <h3 class="text-xl font-semibold mb-2">RobotBenchmark</h3>
+          <p>Web-based robotics challenges and benchmarks that students can try without complex local installation.</p>
+          <p class="mt-1 text-sm text-gray-600">Добра стартова точка за демонстрации в браузър.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="papers" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 mt-10">Selected Papers and Reading / Подбрани статии и четене</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://arxiv.org/abs/2307.15818" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Paper</span><span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">RT-2</span></div>
+          <h3 class="text-xl font-semibold mb-2">RT-2: Vision-Language-Action Models</h3>
+          <p>Research paper behind RT-2 and the idea of converting web-scale visual-language knowledge into robot control.</p>
+          <p class="mt-1 text-sm text-gray-600">Основна статия за връзката между VLM/VLA модели и роботизирано управление.</p>
+        </a>
+        <a href="https://arxiv.org/abs/2406.09246" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Paper</span><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Open source</span></div>
+          <h3 class="text-xl font-semibold mb-2">OpenVLA Paper</h3>
+          <p>Open-source VLA model paper with robot demonstrations, fine-tuning, and generalist manipulation policy results.</p>
+          <p class="mt-1 text-sm text-gray-600">Подходяща статия за студенти, които искат да разберат „foundation models for robots“.</p>
+        </a>
+        <a href="https://arxiv.org/abs/2410.06472" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Paper</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">LLM agent</span></div>
+          <h3 class="text-xl font-semibold mb-2">ROSA: Robot Operating System Agent</h3>
+          <p>Paper describing an AI agent that lets users interact with ROS-based robotic systems using natural language.</p>
+          <p class="mt-1 text-sm text-gray-600">Много близко до практическа лабораторна тема: LLM като слой за управление и диагностика.</p>
+        </a>
+        <a href="https://arxiv.org/abs/2106.03468" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Paper</span><span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">Governance</span></div>
+          <h3 class="text-xl font-semibold mb-2">Healthcare Robot Governance</h3>
+          <p>Concepts, definitions, and governance considerations for healthcare robots, including surgical, assistive, and service robots.</p>
+          <p class="mt-1 text-sm text-gray-600">Полезно за дискусия за безопасност, регулации, отговорност и реално внедряване.</p>
+        </a>
+        <a href="https://arxiv.org/abs/2509.26106" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-3 flex flex-wrap gap-2"><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Paper</span><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Hospital simulation</span></div>
+          <h3 class="text-xl font-semibold mb-2">Multi-Robot Healthcare Delivery and Diagnostics</h3>
+          <p>Simulated multi-robot infrastructure for monitoring, medicine delivery, and emergency support in healthcare contexts.</p>
+          <p class="mt-1 text-sm text-gray-600">Интересен пример за студентски проект тип „болница в симулация“.</p>
+        </a>
+      </div>
+    </section>
+
+    <footer class="text-center text-gray-500 text-sm mt-12 pb-6">
+      <p>Prepared as a curated educational index for robotics and AI demonstrations.</p>
+    </footer>
+  </main>
+</body>
+</html>
