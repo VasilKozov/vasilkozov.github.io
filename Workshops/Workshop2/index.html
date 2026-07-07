@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Robotics Workshop - Webots and mechArm</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .tab-btn.active { background: #111827; color: white; border-color: #111827; }
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] .chevron { transform: rotate(180deg); }
+    .soft-grid { background-image: radial-gradient(circle at 1px 1px, rgba(15,23,42,0.08) 1px, transparent 0); background-size: 22px 22px; }
+    .step-number { min-width: 2.5rem; }
+    pre { overflow-x: auto; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    .checklist li::marker { color: #111827; }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <header class="soft-grid border-b border-gray-200 bg-gradient-to-br from-white via-slate-50 to-sky-50">
+    <div class="max-w-7xl mx-auto px-6 py-10">
+      <div class="grid lg:grid-cols-3 gap-6 items-center">
+        <div class="lg:col-span-2">
+          <p class="inline-flex items-center rounded-full bg-sky-100 px-3 py-1 text-sm font-semibold text-sky-700 mb-4">Student workshop: simulation first, real robot second</p>
+          <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Basic Robotics Workshop</h1>
+          <p class="text-lg text-gray-700 max-w-3xl">Use Webots to build a small simulated production cell, then optionally run a safe first program on the Elephant Robotics mechArm 270-Pi.</p>
+        </div>
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+          <h2 class="text-xl font-semibold mb-3">Workshop outputs</h2>
+          <ul class="space-y-2 text-gray-700">
+            <li>✅ Webots project or modified demo</li>
+            <li>✅ Robot movement sequence</li>
+            <li>✅ Production-line or manipulation logic</li>
+            <li>✅ Short safety explanation</li>
+            <li>✅ Optional mechArm 270-Pi hardware demo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-8">
+    <nav class="flex flex-wrap gap-3 mb-8">
+      <button class="tab-btn active px-4 py-2 rounded-xl border border-gray-300 bg-white shadow-sm font-semibold" data-tab="normal">Normal part: Webots simulation</button>
+      <button class="tab-btn px-4 py-2 rounded-xl border border-gray-300 bg-white shadow-sm font-semibold" data-tab="advanced">Advanced part: mechArm</button>
+      <button class="tab-btn px-4 py-2 rounded-xl border border-gray-300 bg-white shadow-sm font-semibold" data-tab="resources">Resources</button>
+    </nav>
+
+    <section id="normal" class="tab-panel active">
+      <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 mb-8">
+        <p class="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-700 mb-4">Normal part</p>
+        <h2 class="text-3xl font-bold mb-3">Webots simulation exercise: mini production cell</h2>
+        <p class="text-gray-700 max-w-4xl">You will work in Webots and create a small robot automation scenario. The goal is not a perfect factory model. The goal is to show that you understand the robotics workflow: define the workspace, inspect the robot devices, program safe motion, add a simple process rule, and explain what would be different on real hardware.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 lg:col-span-2">
+          <h3 class="text-2xl font-bold mb-4">Main task scenario</h3>
+          <p class="text-gray-700 mb-4">Imagine a small production line where parts arrive in a robot work area. A robot must move between safe positions, pick or simulate picking a part, place it in a target area, and optionally assemble a simple composite part.</p>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="rounded-xl border border-gray-200 p-4 bg-slate-50">
+              <h4 class="font-semibold mb-2">Level 1</h4>
+              <p class="text-gray-700">Move the robot through safe predefined positions.</p>
+            </div>
+            <div class="rounded-xl border border-gray-200 p-4 bg-slate-50">
+              <h4 class="font-semibold mb-2">Level 2</h4>
+              <p class="text-gray-700">Create a repeatable pick-and-place sequence between two zones.</p>
+            </div>
+            <div class="rounded-xl border border-gray-200 p-4 bg-slate-50">
+              <h4 class="font-semibold mb-2">Level 3</h4>
+              <p class="text-gray-700">Add sorting, inspection, conveyor timing, or a simple assembly idea.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+          <h3 class="text-xl font-semibold mb-3">Individual workshop work</h3>
+          <p class="text-gray-700 mb-3">Each student completes the exercise independently. You may discuss ideas with colleagues, but your Webots scene, controller logic, screenshots, and short explanation should be your own work.</p>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Plan:</strong> define your robot task and labelled work zones.</li>
+            <li><strong>Implement:</strong> modify the Webots world and controller step by step.</li>
+            <li><strong>Test:</strong> run the simulation safely and fix obvious issues.</li>
+            <li><strong>Explain:</strong> describe what the robot does and what its limitations are.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 mb-8">
+        <h3 class="text-xl font-bold mb-2">Recommended Webots route</h3>
+        <p class="text-gray-800 mb-3">Use one of the bundled Webots sample worlds as your base. This is better than starting from an empty world because students can immediately inspect a working controller, devices, robot node, end effector, and scene objects. Good starting points are a Universal Robots industrial-arm scene, an assembly-line/conveyor scene, or any factory environment available in your installed Webots sample browser.</p>
+        <p class="text-gray-800">If your Webots installation has a slightly different sample name, keep the task the same: choose a robot-arm or conveyor/factory demo, copy it to your own project folder, and modify the controller and scene.</p>
+      </div>
+
+      <div class="space-y-5 mb-8">
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex gap-4">
+          <div class="step-number h-10 w-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold">1</div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Install and open Webots</h3>
+            <p class="text-gray-700 mb-3">Install Webots on your laptop or use a laboratory computer where it is already installed. Open Webots and spend two minutes exploring the interface: scene tree on the left, 3D world in the center, text editor/controller area, and simulation controls at the top.</p>
+            <div class="grid md:grid-cols-3 gap-3 text-sm">
+              <div class="rounded-xl bg-slate-50 border p-3"><strong>Scene tree</strong><br>Find robots, objects, solids, motors, cameras, and sensors.</div>
+              <div class="rounded-xl bg-slate-50 border p-3"><strong>3D world</strong><br>Observe collisions, robot motion, and object placement.</div>
+              <div class="rounded-xl bg-slate-50 border p-3"><strong>Controller</strong><br>Edit the program that controls the robot.</div>
+            </div>
+            <div class="flex flex-wrap gap-3 mt-4">
+              <a href="https://www.cyberbotics.com/" target="_blank" class="px-4 py-2 rounded-xl bg-gray-900 text-white font-semibold">Open Webots website</a>
+              <a href="https://www.cyberbotics.com/doc/guide/tutorials" target="_blank" class="px-4 py-2 rounded-xl bg-slate-100 border border-slate-200 font-semibold">Webots tutorials</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex gap-4">
+          <div class="step-number h-10 w-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold">2</div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Open a sample world and save your own copy</h3>
+            <p class="text-gray-700 mb-3">From Webots, open a bundled sample world with an industrial arm, conveyor, assembly-line, or factory environment. Immediately save it into your own project folder so you do not overwrite the original sample.</p>
+            <ol class="list-decimal pl-6 text-gray-700 space-y-2">
+              <li>Open a sample world with a robot arm or factory scene.</li>
+              <li>Run the simulation once without changing anything.</li>
+              <li>Observe the default robot behaviour and write down what the controller does.</li>
+              <li>Save a copy in a folder named <code>robotics_workshop_team_X</code>.</li>
+            </ol>
+            <div class="rounded-xl bg-amber-50 border border-amber-200 p-4 mt-4 text-gray-800">
+              <strong>Good practice:</strong> do not modify everything at once. First make one small change, run, observe, then continue.
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex gap-4">
+          <div class="step-number h-10 w-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold">3</div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Map the production cell</h3>
+            <p class="text-gray-700 mb-3">Before programming, define named zones. Use either visible markers in the world or written coordinates. Every person must define at least four zones.</p>
+            <div class="grid md:grid-cols-4 gap-3 text-sm">
+              <div class="rounded-xl bg-slate-50 border p-3"><strong>HOME</strong><br>Safe start and finish pose.</div>
+              <div class="rounded-xl bg-slate-50 border p-3"><strong>PICKUP</strong><br>Part appears or waits here.</div>
+              <div class="rounded-xl bg-slate-50 border p-3"><strong>PROCESS</strong><br>Inspection or assembly position.</div>
+              <div class="rounded-xl bg-slate-50 border p-3"><strong>OUTPUT</strong><br>Finished part is delivered.</div>
+            </div>
+            <p class="text-gray-700 mt-3">Draw a quick sketch or take a screenshot and label these zones. This will make your presentation much clearer.</p>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex gap-4">
+          <div class="step-number h-10 w-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold">4</div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Inspect the robot devices</h3>
+            <p class="text-gray-700 mb-3">Open the robot node in the scene tree and identify the devices used by the controller. Typical devices are motors, position sensors, a gripper, a camera, distance sensors, or a supervisor controller.</p>
+            <div class="grid md:grid-cols-2 gap-3 text-gray-700">
+              <div class="rounded-xl bg-slate-50 border p-3"><strong>For a robot arm:</strong> list the joint names, gripper/tool name, and any position sensors.</div>
+              <div class="rounded-xl bg-slate-50 border p-3"><strong>For a mobile robot:</strong> list wheel motors, distance sensors, camera, and target object names.</div>
+            </div>
+            <p class="text-gray-700 mt-3">Write these device names into the top of your controller as comments. This helps prevent mistakes when the code becomes longer.</p>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex gap-4">
+          <div class="step-number h-10 w-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold">5</div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Create the first safe movement</h3>
+            <p class="text-gray-700 mb-3">Start with movement only. Do not add gripping, collision, sorting, or object manipulation until you see that the robot can move safely between known points.</p>
+            <pre class="bg-gray-900 text-gray-100 rounded-xl p-4 text-sm"><code># Pseudocode: first safe movement
+initialize_robot()
+set_speed(low)
+move_to(HOME)
+move_to(PICK_APPROACH)   # above or before the object
+move_to(PICK_POINT)      # near the object, but not colliding
+move_to(PICK_APPROACH)
+move_to(HOME)</code></pre>
+            <div class="rounded-xl bg-green-50 border border-green-200 p-4 mt-4 text-gray-800">
+              <strong>Success condition:</strong> the robot reaches at least three visible positions without crossing through objects or the table.
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex gap-4">
+          <div class="step-number h-10 w-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold">6</div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Add pick-and-place or simulated manipulation</h3>
+            <p class="text-gray-700 mb-3">If the sample world already has a gripper or attach/detach behaviour, use it. If not, simulate manipulation by moving to the object, waiting one second, and then moving to the output zone while explaining that this represents a pick action.</p>
+            <pre class="bg-gray-900 text-gray-100 rounded-xl p-4 text-sm"><code># Pseudocode: manipulation sequence
+move_to(HOME)
+move_to(PICK_APPROACH)
+move_to(PICK_POINT)
+close_gripper_or_mark_part_as_picked()
+move_to(PICK_APPROACH)
+move_to(OUTPUT_APPROACH)
+move_to(OUTPUT_POINT)
+open_gripper_or_mark_part_as_released()
+move_to(HOME)</code></pre>
+            <p class="text-gray-700 mt-3">Add short pauses at important points. Pauses make the demonstration easier to understand and make debugging easier.</p>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex gap-4">
+          <div class="step-number h-10 w-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold">7</div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Add production-line logic</h3>
+            <p class="text-gray-700 mb-3">Now add a simple decision. You can use a real sensor/camera if the sample has one, or use a variable to represent the part type.</p>
+            <pre class="bg-gray-900 text-gray-100 rounded-xl p-4 text-sm"><code># Pseudocode: production rule
+part_type = read_sensor_or_set_variable()
+
+if part_type == "red":
+    target = OUTPUT_A
+elif part_type == "blue":
+    target = OUTPUT_B
+else:
+    target = REJECT_BIN
+
+pick_part()
+place_part(target)
+return_home()</code></pre>
+            <div class="grid md:grid-cols-3 gap-3 mt-4 text-gray-700">
+              <div class="rounded-xl bg-slate-50 border p-3"><strong>Sorting:</strong> red/blue parts go to different bins.</div>
+              <div class="rounded-xl bg-slate-50 border p-3"><strong>Inspection:</strong> accepted parts go forward, defective parts are rejected.</div>
+              <div class="rounded-xl bg-slate-50 border p-3"><strong>Assembly:</strong> base part is placed first, cover part second.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex gap-4">
+          <div class="step-number h-10 w-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold">8</div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Make the scenario repeatable</h3>
+            <p class="text-gray-700 mb-3">Industrial robot programs are valuable because they are repeatable. Add a loop that performs the task three times, or make three different parts go through the cell.</p>
+            <pre class="bg-gray-900 text-gray-100 rounded-xl p-4 text-sm"><code>for cycle in range(3):
+    part_type = get_next_part(cycle)
+    run_production_cycle(part_type)
+    log_result(cycle, part_type)</code></pre>
+            <p class="text-gray-700 mt-3">Keep the loop slow and visible. A workshop demo should be understandable, not fast.</p>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex gap-4">
+          <div class="step-number h-10 w-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold">9</div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Document and present the result</h3>
+            <p class="text-gray-700 mb-3">Prepare a short demonstration. You do not need a PowerPoint. Show the Webots world, run the controller, and explain the logic. Include one screenshot or short video if possible.</p>
+            <div class="grid md:grid-cols-2 gap-4 text-gray-700">
+              <div class="rounded-xl bg-slate-50 border p-4">
+                <h4 class="font-semibold mb-2">Minimum explanation</h4>
+                <ul class="list-disc pl-5 space-y-1 checklist">
+                  <li>What robot is used?</li>
+                  <li>What are the zones?</li>
+                  <li>What is the movement sequence?</li>
+                  <li>What production rule is implemented?</li>
+                  <li>What can go wrong in a real factory?</li>
+                </ul>
+              </div>
+              <div class="rounded-xl bg-slate-50 border p-4">
+                <h4 class="font-semibold mb-2">Good engineering reflection</h4>
+                <ul class="list-disc pl-5 space-y-1 checklist">
+                  <li>Safe approach points are separated from pick/place points.</li>
+                  <li>The robot returns home after each cycle.</li>
+                  <li>The program is tested in small increments.</li>
+                  <li>Limitations are stated honestly.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <details class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 mb-8" open>
+        <summary class="cursor-pointer flex items-center justify-between gap-4">
+          <span class="text-xl font-semibold">Example normal-part topics</span>
+          <span class="chevron transition text-gray-500">⌄</span>
+        </summary>
+        <div class="mt-5 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="rounded-xl border p-4 bg-slate-50"><strong>Robot sorting station</strong><br><span class="text-gray-700">Sort objects by color or type into two bins.</span></div>
+          <div class="rounded-xl border p-4 bg-slate-50"><strong>Two-part assembly</strong><br><span class="text-gray-700">Place a cover on a base object or stack two blocks.</span></div>
+          <div class="rounded-xl border p-4 bg-slate-50"><strong>Conveyor pickup</strong><br><span class="text-gray-700">Move parts from a conveyor zone to a table.</span></div>
+          <div class="rounded-xl border p-4 bg-slate-50"><strong>Inspection workflow</strong><br><span class="text-gray-700">Move a part to an inspection zone, then decide output.</span></div>
+          <div class="rounded-xl border p-4 bg-slate-50"><strong>Packaging cell</strong><br><span class="text-gray-700">Place two parts into a container or tray.</span></div>
+          <div class="rounded-xl border p-4 bg-slate-50"><strong>Safety-zone demonstration</strong><br><span class="text-gray-700">Show how approach points avoid collisions.</span></div>
+        </div>
+      </details>
+    </section>
+
+    <section id="advanced" class="tab-panel">
+      <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 mb-8">
+        <p class="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700 mb-4">Advanced part</p>
+        <h2 class="text-3xl font-bold mb-3">Real robot exercise: first program on mechArm 270-Pi</h2>
+        <p class="text-gray-700 max-w-4xl">The goal is simple and safe: connect to the robot, read its state, move through a few low-speed poses, optionally test the gripper, then return to a safe home pose. This is not a vision task and not an LLM-control task; it is a first reliable hardware-control exercise.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+          <h3 class="text-xl font-semibold mb-3">Hardware</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>Elephant Robotics mechArm 270-Pi</li>
+            <li>Raspberry Pi-based controller</li>
+            <li>Official external power supply</li>
+            <li>Optional adaptive gripper</li>
+            <li>Cleared table workspace</li>
+            <li>One instructor operator</li>
+          </ul>
+        </div>
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+          <h3 class="text-xl font-semibold mb-3">Software</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>Python 3</li>
+            <li><code>pymycobot</code></li>
+            <li>Terminal or VS Code</li>
+            <li>VNC Viewer or monitor/keyboard/mouse</li>
+            <li>Optional SSH to the Pi</li>
+          </ul>
+        </div>
+        <div class="bg-red-50 shadow-md rounded-2xl p-6 border border-red-200">
+          <h3 class="text-xl font-semibold mb-3">Safety rules</h3>
+          <ul class="space-y-2 text-gray-800">
+            <li>Keep hands outside the work envelope.</li>
+            <li>Use low speed first: 15–30.</li>
+            <li>Test without payload first.</li>
+            <li>Stop if the robot moves unexpectedly.</li>
+            <li>Never force a powered joint by hand.</li>
+          </ul>
+        </div>
+      </div>
+
+      <details class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 mb-8" open>
+        <summary class="cursor-pointer flex items-center justify-between gap-4">
+          <span class="text-xl font-semibold">Before coding: boot, power, and connect the robot</span>
+          <span class="chevron transition text-gray-500">⌄</span>
+        </summary>
+        <div class="mt-5 space-y-4 text-gray-700">
+          <div class="rounded-xl bg-amber-50 border border-amber-200 p-4 text-gray-800">
+            <strong>Use the official guide first.</strong> Follow Elephant Robotics’ “Unpackaging and First-time Use” and “PI Robot Instructions” pages for the exact boot and connection procedure before students run Python code.
+          </div>
+          <ol class="list-decimal pl-6 space-y-3">
+            <li><strong>Fix the robot base.</strong> Place the mechArm on a stable table/base with enough free workspace around the arm.</li>
+            <li><strong>Connect the official external power supply.</strong> Do not rely on USB Type-C alone for robot-arm power.</li>
+            <li><strong>Boot the Raspberry Pi system.</strong> Wait until the Pi-based system is fully started.</li>
+            <li><strong>Connect by VNC or direct display.</strong> For the Ubuntu 20.04 image, connect to the robot access point <code>ElephantRobotics_AP</code>, password <code>Elephant</code>, then open VNC Viewer to <code>10.42.0.1</code>. The VNC password is also <code>Elephant</code>. If a monitor is available, connect HDMI, keyboard, and mouse directly.</li>
+            <li><strong>Open a terminal on the robot.</strong> Run <code>python3 --version</code> and confirm the environment is ready.</li>
+            <li><strong>Keep the robot area clear.</strong> The first run should be without payload and with everyone standing outside the motion area.</li>
+          </ol>
+          <div class="flex flex-wrap gap-3 pt-2">
+            <a href="https://docs.elephantrobotics.com/docs/gitbook-en/2-serialproduct/2.6-mecharm_270/2.6.1.3%20Unpacking%20and%20first%20use.html" target="_blank" class="px-4 py-2 rounded-xl bg-gray-900 text-white font-semibold">Official first-time use</a>
+            <a href="https://docs.elephantrobotics.com/docs/gitbook-en/3-RobotKnowledge/3.5-ubuntu-system/" target="_blank" class="px-4 py-2 rounded-xl bg-slate-100 border border-slate-200 font-semibold">PI robot instructions</a>
+            <a href="https://docs.elephantrobotics.com/docs/gitbook-en/2-serialproduct/2.6-mecharm_270/2.6.1.4%20Development%20environment%20and%20construction.html" target="_blank" class="px-4 py-2 rounded-xl bg-slate-100 border border-slate-200 font-semibold">Development environment</a>
+          </div>
+        </div>
+      </details>
+
+      <div class="space-y-5 mb-8">
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex gap-4">
+          <div class="step-number h-10 w-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold">1</div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Prepare the Python environment</h3>
+            <p class="text-gray-700 mb-3">Install or update the official Elephant Robotics Python API. For the Pi version, run this directly inside the robot's Raspberry Pi environment unless you have already prepared remote control another way.</p>
+            <pre class="bg-gray-900 text-gray-100 rounded-xl p-4 text-sm"><code>python3 --version
+python3 -m pip install pymycobot --upgrade --user</code></pre>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex gap-4">
+          <div class="step-number h-10 w-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold">2</div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Create a file named <code>hello_mecharm.py</code></h3>
+            <p class="text-gray-700 mb-3">This script tries common ports used in Elephant Robotics / mechArm setups. It starts gently, reads joint angles, moves through safe small poses, and returns to a neutral pose.</p>
+            <pre class="bg-gray-900 text-gray-100 rounded-xl p-4 text-sm"><code>from pymycobot import MechArm270
+import time
+
+# Common ports for mechArm / myCobot setups.
+# On the Pi, /dev/ttyAMA0 or /dev/ttyUSB0 are common.
+# On Windows, COM3 is a common example, but your number may differ.
+CANDIDATE_PORTS = ["/dev/ttyAMA0", "/dev/ttyUSB0", "/dev/ttyACM0", "COM3"]
+CANDIDATE_BAUDS = [1000000, 115200, None]
+
+SAFE_HOME = [0, 0, 0, 0, 0, 0]
+POSE_LEFT = [-25, 20, -20, 0, 30, 0]
+POSE_RIGHT = [25, 20, -20, 0, 30, 0]
+POSE_CENTER = [0, 25, -25, 0, 35, 0]
+
+
+def connect():
+    last_error = None
+    for port in CANDIDATE_PORTS:
+        for baud in CANDIDATE_BAUDS:
+            try:
+                print(f"Trying port={port}, baud={baud}")
+                arm = MechArm270(port) if baud is None else MechArm270(port, baud)
+                time.sleep(1)
+                print("Connected. Current angles:", arm.get_angles())
+                return arm
+            except Exception as exc:
+                last_error = exc
+    raise RuntimeError(f"Could not connect to mechArm. Last error: {last_error}")
+
+
+def move(arm, angles, speed=25, wait=3):
+    print("Moving to:", angles)
+    arm.send_angles(angles, speed)
+    time.sleep(wait)
+    print("Current angles:", arm.get_angles())
+
+
+def main():
+    arm = connect()
+
+    # Wake / focus servos if the API and firmware support it.
+    try:
+        arm.power_on()
+    except Exception:
+        pass
+
+    # First run: no object in gripper, low speed, clear workspace.
+    move(arm, SAFE_HOME, speed=20, wait=3)
+    move(arm, POSE_LEFT, speed=20, wait=3)
+    move(arm, POSE_RIGHT, speed=20, wait=3)
+    move(arm, POSE_CENTER, speed=20, wait=3)
+    move(arm, SAFE_HOME, speed=20, wait=3)
+
+    print("Demo finished. Releasing servos.")
+    arm.release_all_servos()
+
+
+if __name__ == "__main__":
+    main()</code></pre>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex gap-4">
+          <div class="step-number h-10 w-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold">3</div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Run the program under supervision</h3>
+            <p class="text-gray-700 mb-3">Clear the robot area, keep the power control accessible, and run the program. Watch how joint-space commands are translated into physical robot movement.</p>
+            <pre class="bg-gray-900 text-gray-100 rounded-xl p-4 text-sm"><code>python3 hello_mecharm.py</code></pre>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex gap-4">
+          <div class="step-number h-10 w-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold">4</div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Optional: test the gripper</h3>
+            <p class="text-gray-700 mb-3">Only do this after the basic motion script works. If your gripper type is the parallel gripper, your previous project used <code>gripper_type=3</code>. Test with no object first.</p>
+            <pre class="bg-gray-900 text-gray-100 rounded-xl p-4 text-sm"><code># Add after successful connection only, and test at low speed.
+# Some gripper APIs differ by firmware/accessory.
+try:
+    arm.set_gripper_value(100, 30, gripper_type=3)  # open
+    time.sleep(2)
+    arm.set_gripper_value(1, 30, gripper_type=3)    # close gently
+    time.sleep(2)
+    arm.set_gripper_value(100, 30, gripper_type=3)  # open again
+except TypeError:
+    # Fallback for API versions that use set_gripper_state
+    arm.set_gripper_state(0, 30)  # open
+    time.sleep(2)
+    arm.set_gripper_state(1, 30)  # close
+    time.sleep(2)
+    arm.set_gripper_state(0, 30)  # open</code></pre>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex gap-4">
+          <div class="step-number h-10 w-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold">5</div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Explain what happened</h3>
+            <p class="text-gray-700 mb-3">Connect the hardware demo back to the simulation: joint limits, safe approach points, repeatability, payload limits, and why industrial systems use programmed paths instead of improvising motion.</p>
+            <div class="rounded-xl bg-purple-50 border border-purple-200 p-4 text-gray-800"><strong>Minimum advanced result:</strong> the robot moves through at least three visible positions and safely returns to home.</div>
+          </div>
+        </div>
+      </div>
+
+      <details class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 mb-8">
+        <summary class="cursor-pointer flex items-center justify-between gap-4">
+          <span class="text-xl font-semibold">Troubleshooting checklist</span>
+          <span class="chevron transition text-gray-500">⌄</span>
+        </summary>
+        <div class="mt-5 grid md:grid-cols-2 gap-4 text-gray-700">
+          <div class="rounded-xl border p-4 bg-slate-50"><strong>Cannot connect by VNC</strong><br>Check that you are connected to the robot access point and that the VNC address is <code>10.42.0.1</code>.</div>
+          <div class="rounded-xl border p-4 bg-slate-50"><strong>Import error</strong><br>Run <code>python3 -m pip install pymycobot --upgrade --user</code> in the same Python environment used to run the script.</div>
+          <div class="rounded-xl border p-4 bg-slate-50"><strong>Port error</strong><br>Check whether the robot is controlled through the Pi serial port, USB serial, or a Windows COM port.</div>
+          <div class="rounded-xl border p-4 bg-slate-50"><strong>No movement</strong><br>Check external power, firmware state, servo focus, and whether the robot is already in an error state.</div>
+          <div class="rounded-xl border p-4 bg-slate-50"><strong>Unexpected motion</strong><br>Stop immediately, reduce speed, simplify poses, and test one joint at a time.</div>
+          <div class="rounded-xl border p-4 bg-slate-50"><strong>Gripper does not respond</strong><br>Check accessory type, firmware/API version, and whether the gripper is connected to the correct port.</div>
+        </div>
+      </details>
+    </section>
+
+    <section id="resources" class="tab-panel">
+      <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 mb-8">
+        <h2 class="text-3xl font-bold mb-3">Resources and optional alternatives</h2>
+        <p class="text-gray-700">The normal workshop is committed to Webots. The alternatives below are included only for students who want to browse other robotics environments after the workshop.</p>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4">Main platform for this workshop</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <a href="https://www.cyberbotics.com/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl border border-gray-100">
+          <h3 class="text-xl font-semibold mb-2">Webots</h3>
+          <p class="text-gray-700">Main simulator for the normal part. Use it for robot arms, production-cell logic, sensors, controllers, and repeatable simulation demos.</p>
+        </a>
+        <a href="https://www.cyberbotics.com/doc/guide/tutorials" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl border border-gray-100">
+          <h3 class="text-xl font-semibold mb-2">Webots tutorials</h3>
+          <p class="text-gray-700">Use this if you need a reminder about worlds, controllers, nodes, sensors, motors, and simulation workflow.</p>
+        </a>
+        <a href="https://webots.cloud/proto?keyword=robot%2Farm" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl border border-gray-100">
+          <h3 class="text-xl font-semibold mb-2">Webots robot-arm browser</h3>
+          <p class="text-gray-700">Online model browsing for discussing industrial arm geometry and mechanisms before coding locally.</p>
+        </a>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4">mechArm 270-Pi resources</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <a href="https://docs.elephantrobotics.com/docs/gitbook-en/2-serialproduct/2.6-mecharm_270/2.6.1-mechArm.html" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl border border-gray-100">
+          <h3 class="text-xl font-semibold mb-2">mechArm 270-Pi docs</h3>
+          <p class="text-gray-700">Official product page for the Elephant Robotics mechArm 270-Pi.</p>
+        </a>
+        <a href="https://docs.elephantrobotics.com/docs/gitbook-en/2-serialproduct/2.6-mecharm_270/2.6.1.3%20Unpacking%20and%20first%20use.html" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl border border-gray-100">
+          <h3 class="text-xl font-semibold mb-2">First-time use</h3>
+          <p class="text-gray-700">Official boot, workspace, power, VNC, and first-use instructions.</p>
+        </a>
+        <a href="https://docs.elephantrobotics.com/docs/gitbook-en/3-RobotKnowledge/3.5-ubuntu-system/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl border border-gray-100">
+          <h3 class="text-xl font-semibold mb-2">PI robot instructions</h3>
+          <p class="text-gray-700">Explanation of PI-version robots as Raspberry Pi-based computer hosts.</p>
+        </a>
+        <a href="https://docs.elephantrobotics.com/docs/gitbook-en/7-ApplicationBasePython/7.1_download.html" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl border border-gray-100">
+          <h3 class="text-xl font-semibold mb-2">Python environment</h3>
+          <p class="text-gray-700">Official environment-building notes for Python and pymycobot.</p>
+        </a>
+        <a href="https://github.com/elephantrobotics/pymycobot" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl border border-gray-100">
+          <h3 class="text-xl font-semibold mb-2">pymycobot</h3>
+          <p class="text-gray-700">Official Python API repository for controlling Elephant Robotics products.</p>
+        </a>
+        <a href="https://github.com/elephantrobotics/pymycobot/blob/main/docs/MechArm_270_en.md" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl border border-gray-100">
+          <h3 class="text-xl font-semibold mb-2">MechArm 270 API</h3>
+          <p class="text-gray-700">API functions for angles, coordinates, servo state, gripper control, and status reading.</p>
+        </a>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4">Optional platforms to browse after the workshop</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://www.coppeliarobotics.com/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl border border-gray-100">
+          <h3 class="text-xl font-semibold mb-2">CoppeliaSim Edu</h3>
+          <p class="text-gray-700">Good alternative for robot arms, kinematics, logistics, digital twins, and factory automation demonstrations.</p>
+        </a>
+        <a href="https://gazebosim.org/docs/latest/getstarted/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl border border-gray-100">
+          <h3 class="text-xl font-semibold mb-2">Gazebo</h3>
+          <p class="text-gray-700">More advanced simulator, especially useful for ROS/ROS 2-based robotics courses.</p>
+        </a>
+        <a href="https://lab.open-roberta.org/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl border border-gray-100">
+          <h3 class="text-xl font-semibold mb-2">Open Roberta Lab</h3>
+          <p class="text-gray-700">Browser-based block programming for quick robotics warm-up activities.</p>
+        </a>
+        <a href="https://roboblockly.com/" target="_blank" class="block bg-white shadow-md rounded-xl p-6 transition transform hover:-translate-y-1 hover:shadow-xl border border-gray-100">
+          <h3 class="text-xl font-semibold mb-2">RoboBlockly</h3>
+          <p class="text-gray-700">Simple browser-based robotics and coding activities for fundamentals.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    function activateTab(tabName) {
+      buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tabName));
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === tabName));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => activateTab(btn.dataset.tab));
+    });
+  </script>
+</body>
+</html>
