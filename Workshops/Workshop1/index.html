@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Story Workshop - Student Instructions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .tab-btn.active { background: #111827; color: white; border-color: #111827; }
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] .chevron { transform: rotate(180deg); }
+    .soft-grid { background-image: radial-gradient(circle at 1px 1px, rgba(15,23,42,0.08) 1px, transparent 0); background-size: 22px 22px; }
+    .step-number { min-width: 2.5rem; }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <header class="soft-grid border-b border-gray-200 bg-gradient-to-br from-white via-slate-50 to-indigo-50">
+    <div class="max-w-7xl mx-auto px-6 py-10">
+      <div class="grid lg:grid-cols-3 gap-6 items-center">
+        <div class="lg:col-span-2">
+          <p class="inline-flex items-center rounded-full bg-indigo-100 px-3 py-1 text-sm font-semibold text-indigo-700 mb-4">AI + Creative Writing + Web Design Workshop</p>
+          <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Create an AI-assisted story showcase website</h1>
+          <p class="text-lg text-gray-700 max-w-3xl">Use a large language model to plan and write an original story, use image generation tools to create characters and locations, then build and publish a small multi-page website that presents the final result.</p>
+        </div>
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+          <h2 class="text-xl font-semibold mb-3">Final deliverable</h2>
+          <ul class="space-y-2 text-gray-700">
+            <li>✅ Minimum 3000-word story</li>
+            <li>✅ At least 3 story parts</li>
+            <li>✅ At least 3 characters and 3 locations</li>
+            <li>✅ At least 6 generated images</li>
+            <li>✅ At least 3 linked HTML pages</li>
+            <li>✅ Short presentation of your work</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-8">
+    <nav class="flex flex-wrap gap-3 justify-center mb-8" aria-label="Workshop sections">
+      <button class="tab-btn active rounded-xl border border-gray-300 bg-white px-4 py-2 font-semibold shadow-sm hover:shadow-md transition" data-tab="instructions">Instructions</button>
+      <button class="tab-btn rounded-xl border border-gray-300 bg-white px-4 py-2 font-semibold shadow-sm hover:shadow-md transition" data-tab="topics">Example Topics</button>
+      <button class="tab-btn rounded-xl border border-gray-300 bg-white px-4 py-2 font-semibold shadow-sm hover:shadow-md transition" data-tab="prompts">Prompt Help</button>
+      <button class="tab-btn rounded-xl border border-gray-300 bg-white px-4 py-2 font-semibold shadow-sm hover:shadow-md transition" data-tab="setup">Stable Diffusion Setup</button>
+      <button class="tab-btn rounded-xl border border-gray-300 bg-white px-4 py-2 font-semibold shadow-sm hover:shadow-md transition" data-tab="evaluation">Evaluation</button>
+    </nav>
+
+    <section id="instructions" class="tab-panel active">
+      <div class="grid lg:grid-cols-12 gap-6">
+        <aside class="lg:col-span-4 space-y-6">
+          <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+            <h2 class="text-2xl font-semibold mb-3">Workshop goal</h2>
+            <p class="text-gray-700">The goal is not to let AI do everything automatically. Your task is to work with AI tools, make creative decisions, edit the result, organize it as a website, and explain your process.</p>
+          </div>
+          <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+            <h2 class="text-2xl font-semibold mb-3">Required language</h2>
+            <p class="text-gray-700">Write the website, story, image descriptions, tables, presentation notes, and final explanation in <strong>English</strong>.</p>
+          </div>
+          <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+            <h2 class="text-2xl font-semibold mb-3">Suggested tools</h2>
+            <div class="grid grid-cols-1 gap-3 text-sm">
+              <a class="rounded-xl bg-gray-50 hover:bg-gray-100 p-3 transition" href="https://chat.openai.com/" target="_blank">ChatGPT or another LLM</a>
+              <a class="rounded-xl bg-gray-50 hover:bg-gray-100 p-3 transition" href="https://copilot.microsoft.com/" target="_blank">Microsoft Copilot</a>
+              <a class="rounded-xl bg-gray-50 hover:bg-gray-100 p-3 transition" href="https://github.com/lllyasviel/stable-diffusion-webui-forge" target="_blank">Stable Diffusion WebUI Forge</a>
+              <a class="rounded-xl bg-gray-50 hover:bg-gray-100 p-3 transition" href="https://docs.github.com/en/pages/quickstart" target="_blank">GitHub Pages quickstart</a>
+            </div>
+          </div>
+        </aside>
+
+        <div class="lg:col-span-8 space-y-6">
+          <article class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+            <h2 class="text-3xl font-bold mb-2">Step-by-step task</h2>
+            <p class="text-gray-700 mb-6">Follow the steps in order. You may use AI for ideas, drafting, image prompts, and coding support, but you must control the final creative and technical decisions.</p>
+
+            <div class="space-y-5">
+              <div class="flex gap-4">
+                <div class="step-number h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">1</div>
+                <div>
+                  <h3 class="text-xl font-semibold">Choose a genre and define the story direction</h3>
+                  <p class="text-gray-700">Open ChatGPT, Copilot, Gemini, a local LLM, or another text-generation tool. Choose a genre such as fantasy, science fiction, mystery, historical fiction, action, romance, alternate history, adventure, or a hybrid. Ask the AI to help you create a plan, but do not accept the first answer blindly.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="step-number h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">2</div>
+                <div>
+                  <h3 class="text-xl font-semibold">Create at least three characters</h3>
+                  <p class="text-gray-700">Generate, discuss, and improve at least three characters. For each character, write down their name, role, visual appearance, personality, motivation, and any important object, power, profession, or conflict. Save the final visual description for image generation.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="step-number h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">3</div>
+                <div>
+                  <h3 class="text-xl font-semibold">Create at least three locations</h3>
+                  <p class="text-gray-700">Create at least three different scenes or places where the story happens. They may be rooms, landscapes, planets, cities, vehicles, virtual worlds, microscopic environments, historical settings, or imaginary spaces. Each location must be used in the actual story.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="step-number h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">4</div>
+                <div>
+                  <h3 class="text-xl font-semibold">Build the plot together with AI</h3>
+                  <p class="text-gray-700">Ask the AI for plot ideas, conflicts, turning points, and possible endings. Improve the result by asking for alternatives, stronger motivation, clearer conflict, better pacing, or a more surprising ending. All main characters and locations should have a purpose in the story.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="step-number h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">5</div>
+                <div>
+                  <h3 class="text-xl font-semibold">Write and edit the full story</h3>
+                  <p class="text-gray-700">Generate a story of at least 3000 words. It must have at least three parts: beginning, middle, and end. Continue improving it until it is coherent, readable, and consistent with your characters and locations. You may add extra parts, an epilogue, or non-standard structure if the full story remains understandable.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="step-number h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">6</div>
+                <div>
+                  <h3 class="text-xl font-semibold">Generate images</h3>
+                  <p class="text-gray-700">Create images for your characters and locations. You need at least six different generated images. You can use Copilot, ChatGPT image generation, Stable Diffusion, ForgeUI, Midjourney, or another tool. Keep notes about which tool you used and what prompt produced each important image.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="step-number h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">7</div>
+                <div>
+                  <h3 class="text-xl font-semibold">Create at least three HTML pages</h3>
+                  <p class="text-gray-700">Build a small website using HTML and CSS. Each page should contain a different part of the story and should include relevant images. The first page should introduce the story; the last page should finish it. You may use JavaScript, Bootstrap, Tailwind, or your own CSS if it improves the result.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="step-number h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">8</div>
+                <div>
+                  <h3 class="text-xl font-semibold">Add navigation</h3>
+                  <p class="text-gray-700">Each page must allow readers to move through the story. Add clear navigation such as Previous / Next buttons, a menu, chapter cards, or story arrows. Test every link before submitting.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="step-number h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">9</div>
+                <div>
+                  <h3 class="text-xl font-semibold">Publish or prepare the project folder</h3>
+                  <p class="text-gray-700">If you publish online, GitHub Pages is recommended. Create a repository, upload your HTML, CSS, JavaScript, and image files, then enable GitHub Pages from the repository settings. GitHub notes that publication may take up to 10 minutes after changes are pushed.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="step-number h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">10</div>
+                <div>
+                  <h3 class="text-xl font-semibold">Present your project</h3>
+                  <p class="text-gray-700">Present the final website, explain your story idea, show the generated images, and describe how you used AI. Focus on your decisions: what worked, what failed, what you changed, and what you learned.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+            <h2 class="text-2xl font-semibold mb-4">Deliverable checklist</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+              <label class="flex gap-3 rounded-xl bg-gray-50 p-4"><input type="checkbox" class="mt-1"> <span>Story is at least 3000 words and makes sense.</span></label>
+              <label class="flex gap-3 rounded-xl bg-gray-50 p-4"><input type="checkbox" class="mt-1"> <span>Story has a beginning, middle, and end.</span></label>
+              <label class="flex gap-3 rounded-xl bg-gray-50 p-4"><input type="checkbox" class="mt-1"> <span>At least 3 characters are described visually.</span></label>
+              <label class="flex gap-3 rounded-xl bg-gray-50 p-4"><input type="checkbox" class="mt-1"> <span>At least 3 locations are described visually.</span></label>
+              <label class="flex gap-3 rounded-xl bg-gray-50 p-4"><input type="checkbox" class="mt-1"> <span>At least 6 generated images are included.</span></label>
+              <label class="flex gap-3 rounded-xl bg-gray-50 p-4"><input type="checkbox" class="mt-1"> <span>At least 3 HTML pages are created.</span></label>
+              <label class="flex gap-3 rounded-xl bg-gray-50 p-4"><input type="checkbox" class="mt-1"> <span>Navigation works between all pages.</span></label>
+              <label class="flex gap-3 rounded-xl bg-gray-50 p-4"><input type="checkbox" class="mt-1"> <span>Presentation is prepared and rehearsed.</span></label>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="topics" class="tab-panel">
+      <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 mb-6">
+        <h2 class="text-3xl font-bold mb-3">Example story topics</h2>
+        <p class="text-gray-700">Choose one, combine several, or invent your own. A good topic should make it easy to create characters, locations, conflict, and images.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition"><h3 class="text-xl font-semibold mb-2">The Last Library on Mars</h3><p class="text-gray-700">A student archivist, a broken maintenance robot, and a mysterious signal protect the last human memory archive during a dust storm.</p></div>
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition"><h3 class="text-xl font-semibold mb-2">The Clockmaker's City</h3><p class="text-gray-700">In a city where time can be repaired mechanically, three apprentices discover that someone is stealing minutes from people’s lives.</p></div>
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition"><h3 class="text-xl font-semibold mb-2">The Forest That Remembers</h3><p class="text-gray-700">A biologist, a lost child, and a forest spirit uncover memories stored inside ancient trees after a technological accident.</p></div>
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition"><h3 class="text-xl font-semibold mb-2">Cyberpunk Detective Agency</h3><p class="text-gray-700">A human detective, an AI assistant, and a street artist investigate a city where advertisements predict crimes before they happen.</p></div>
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition"><h3 class="text-xl font-semibold mb-2">The Submarine Under the Desert</h3><p class="text-gray-700">Explorers find an ocean hidden under sand and must decide whether to reveal it or protect the creatures living there.</p></div>
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition"><h3 class="text-xl font-semibold mb-2">The Village of Borrowed Dreams</h3><p class="text-gray-700">Every night villagers share the same dream, but three young people realize the dream is actually a message from another world.</p></div>
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition"><h3 class="text-xl font-semibold mb-2">The Museum After Midnight</h3><p class="text-gray-700">Historical figures in paintings wake up and need help stopping a stolen artifact from changing history.</p></div>
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition"><h3 class="text-xl font-semibold mb-2">Robots in the Flooded Hospital</h3><p class="text-gray-700">A service robot, a nurse, and a patient try to keep a hospital running after a storm damages the city.</p></div>
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition"><h3 class="text-xl font-semibold mb-2">The Map Written in Stars</h3><p class="text-gray-700">Three travelers follow a constellation map that changes every night and leads them to impossible places.</p></div>
+      </div>
+    </section>
+
+    <section id="prompts" class="tab-panel">
+      <div class="grid lg:grid-cols-2 gap-6">
+        <article class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+          <h2 class="text-3xl font-bold mb-3">Starter prompt</h2>
+          <p class="text-gray-700 mb-4">Use this as a starting point and replace the parts in brackets.</p>
+          <pre class="bg-gray-900 text-gray-100 rounded-xl p-4 overflow-auto text-sm whitespace-pre-wrap">Hello, my task is to work with you to create a short story of at least 3000 words. The story must have three main parts: beginning, middle, and end.
+
+The genre I want is [genre]. The tone should be [tone: mysterious / funny / dramatic / adventurous / educational].
+
+First, help me define three interesting characters with names, visual descriptions, motivations, and roles in the plot. Then help me define three locations that will be used in the beginning, middle, and end of the story.
+
+After that, help me build the plot, write the story, create image-generation prompts, and plan a small HTML website where I will present the story.</pre>
+        </article>
+
+        <article class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+          <h2 class="text-3xl font-bold mb-3">Prompting strategy</h2>
+          <div class="space-y-3 text-gray-700">
+            <p><strong>Ask for alternatives.</strong> Do not accept only one idea. Ask for three versions, compare them, and choose the best.</p>
+            <p><strong>Control the structure.</strong> Tell the AI exactly what you need: number of characters, number of scenes, word count, tone, and constraints.</p>
+            <p><strong>Improve in cycles.</strong> Ask the AI to rewrite weak parts, fix contradictions, make the ending stronger, or make descriptions more visual.</p>
+            <p><strong>Keep notes.</strong> Save the final descriptions, prompts, and tools used. You will need them for your tables and presentation.</p>
+          </div>
+        </article>
+
+        <article class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 lg:col-span-2">
+          <h2 class="text-3xl font-bold mb-3">Useful prompt templates</h2>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="rounded-xl bg-gray-50 p-4"><h3 class="font-semibold mb-2">Character refinement</h3><p class="text-sm text-gray-700">Improve this character so they have a clear goal, weakness, visual identity, and connection to the main conflict.</p></div>
+            <div class="rounded-xl bg-gray-50 p-4"><h3 class="font-semibold mb-2">Location design</h3><p class="text-sm text-gray-700">Describe this location visually so it can be used both in the story and as an image-generation prompt.</p></div>
+            <div class="rounded-xl bg-gray-50 p-4"><h3 class="font-semibold mb-2">Plot repair</h3><p class="text-sm text-gray-700">Find problems in this plot and suggest fixes for pacing, motivation, conflict, and ending.</p></div>
+            <div class="rounded-xl bg-gray-50 p-4"><h3 class="font-semibold mb-2">Image prompt</h3><p class="text-sm text-gray-700">Turn this character/location description into a detailed image-generation prompt with style, lighting, composition, and mood.</p></div>
+            <div class="rounded-xl bg-gray-50 p-4"><h3 class="font-semibold mb-2">HTML planning</h3><p class="text-sm text-gray-700">Plan a three-page HTML website for this story. Suggest page titles, image placement, navigation, and CSS style.</p></div>
+            <div class="rounded-xl bg-gray-50 p-4"><h3 class="font-semibold mb-2">Presentation reflection</h3><p class="text-sm text-gray-700">Help me explain how I used AI, what I changed manually, and what difficulties I had during the project.</p></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="setup" class="tab-panel">
+      <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 mb-6">
+        <h2 class="text-3xl font-bold mb-3">Stable Diffusion / ForgeUI installation help</h2>
+        <p class="text-gray-700">This section is optional. Students can use any image-generation tool. Use local Stable Diffusion only if your computer is suitable and you have enough time to set it up.</p>
+      </div>
+
+      <div class="space-y-4">
+        <details class="bg-white shadow-md rounded-2xl border border-gray-100 overflow-hidden">
+          <summary class="cursor-pointer p-6 flex justify-between items-center">
+            <span class="text-xl font-semibold">Recommended option: Stable Diffusion WebUI Forge one-click package</span>
+            <span class="chevron transition-transform">⌄</span>
+          </summary>
+          <div class="px-6 pb-6 text-gray-700 space-y-4">
+            <p>Forge is a fork/platform based on Stable Diffusion WebUI that focuses on easier development, resource management, inference speed, and experimental features.</p>
+            <ol class="list-decimal pl-6 space-y-2">
+              <li>Open the official <a class="text-indigo-700 underline" href="https://github.com/lllyasviel/stable-diffusion-webui-forge" target="_blank">Stable Diffusion WebUI Forge GitHub page</a>.</li>
+              <li>Download the one-click installation package recommended in the Forge README.</li>
+              <li>Extract the archive to a folder with a simple path, for example <code class="bg-gray-100 px-1 rounded">D:\AI\Forge</code>.</li>
+              <li>Run <code class="bg-gray-100 px-1 rounded">update.bat</code> first.</li>
+              <li>Run <code class="bg-gray-100 px-1 rounded">run.bat</code> to start Forge.</li>
+              <li>Wait until the command window gives you a local web address, usually similar to <code class="bg-gray-100 px-1 rounded">http://127.0.0.1:7860</code>.</li>
+              <li>Open the address in your browser and start generating images.</li>
+            </ol>
+            <p class="rounded-xl bg-amber-50 border border-amber-200 p-4"><strong>Important:</strong> The Forge README specifically recommends running <code>update.bat</code> because otherwise you may use an older version with bugs that have already been fixed.</p>
+          </div>
+        </details>
+
+        <details class="bg-white shadow-md rounded-2xl border border-gray-100 overflow-hidden">
+          <summary class="cursor-pointer p-6 flex justify-between items-center">
+            <span class="text-xl font-semibold">Manual installation with Git and Python</span>
+            <span class="chevron transition-transform">⌄</span>
+          </summary>
+          <div class="px-6 pb-6 text-gray-700 space-y-4">
+            <p>Use this only if you are comfortable with command-line tools.</p>
+            <ol class="list-decimal pl-6 space-y-2">
+              <li>Install <a class="text-indigo-700 underline" href="https://git-scm.com/downloads" target="_blank">Git</a>.</li>
+              <li>Install <a class="text-indigo-700 underline" href="https://www.python.org/downloads/windows/" target="_blank">Python for Windows</a>. During installation, enable the option to add Python to PATH if available.</li>
+              <li>Open a terminal in the folder where you want to install Forge.</li>
+              <li>Run: <code class="bg-gray-100 px-1 rounded">git clone https://github.com/lllyasviel/stable-diffusion-webui-forge.git</code></li>
+              <li>Open the new folder and run <code class="bg-gray-100 px-1 rounded">webui-user.bat</code>.</li>
+              <li>After the first setup finishes, open the local address shown in the console.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="bg-white shadow-md rounded-2xl border border-gray-100 overflow-hidden">
+          <summary class="cursor-pointer p-6 flex justify-between items-center">
+            <span class="text-xl font-semibold">Where to place models and images</span>
+            <span class="chevron transition-transform">⌄</span>
+          </summary>
+          <div class="px-6 pb-6 text-gray-700 space-y-4">
+            <ul class="list-disc pl-6 space-y-2">
+              <li>Stable Diffusion checkpoint files usually go in <code class="bg-gray-100 px-1 rounded">models/Stable-diffusion</code>.</li>
+              <li>LoRA files usually go in <code class="bg-gray-100 px-1 rounded">models/Lora</code>.</li>
+              <li>Generated images are usually saved in an <code class="bg-gray-100 px-1 rounded">outputs</code> folder.</li>
+              <li>For the workshop website, copy only the final selected images into your project folder, preferably using short English filenames such as <code class="bg-gray-100 px-1 rounded">elena.png</code> or <code class="bg-gray-100 px-1 rounded">city-background.jpg</code>.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="bg-white shadow-md rounded-2xl border border-gray-100 overflow-hidden">
+          <summary class="cursor-pointer p-6 flex justify-between items-center">
+            <span class="text-xl font-semibold">If local installation is too difficult</span>
+            <span class="chevron transition-transform">⌄</span>
+          </summary>
+          <div class="px-6 pb-6 text-gray-700 space-y-4">
+            <p>You may use browser-based image tools instead. The important part of the workshop is that you create suitable visual material, keep track of your prompts/tools, and use the images in your final website.</p>
+            <div class="grid md:grid-cols-2 gap-3">
+              <a class="rounded-xl bg-gray-50 hover:bg-gray-100 p-3 transition" href="https://copilot.microsoft.com/" target="_blank">Copilot image generation</a>
+              <a class="rounded-xl bg-gray-50 hover:bg-gray-100 p-3 transition" href="https://chat.openai.com/" target="_blank">ChatGPT image generation</a>
+              <a class="rounded-xl bg-gray-50 hover:bg-gray-100 p-3 transition" href="https://www.midjourney.com/" target="_blank">Midjourney</a>
+              <a class="rounded-xl bg-gray-50 hover:bg-gray-100 p-3 transition" href="https://github.com/AUTOMATIC1111/stable-diffusion-webui" target="_blank">AUTOMATIC1111 Stable Diffusion WebUI</a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="evaluation" class="tab-panel">
+      <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 mb-6">
+        <h2 class="text-3xl font-bold mb-3">Evaluation rubric</h2>
+        <p class="text-gray-700">This rubric follows the uploaded Excel evaluation sheet. The main score is out of 120 points. Content quality is also marked separately from 2 to 6.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6 mb-6">
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100"><h3 class="text-xl font-semibold mb-2">Content grade</h3><p class="text-gray-700">The story content receives a separate grade from <strong>2 to 6</strong>. This reflects coherence, creativity, narrative quality, and how well the story uses the required characters and places.</p></div>
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100"><h3 class="text-xl font-semibold mb-2">Presentation score</h3><p class="text-gray-700">The presentation and delivery criteria are scored with points, including timing, balance, synchronization, storytelling, formatting, and answers to questions.</p></div>
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100"><h3 class="text-xl font-semibold mb-2">Bonuses</h3><p class="text-gray-700">Creativity and English use can add extra points. Use them to show originality, clear communication, and effort beyond the minimum.</p></div>
+      </div>
+
+      <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100 overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-gray-900 text-white">
+              <th class="p-3 rounded-tl-xl">Criterion</th>
+              <th class="p-3">What is evaluated</th>
+              <th class="p-3 rounded-tr-xl text-right">Max points</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr><td class="p-3 font-semibold">Presentation</td><td class="p-3 text-gray-700">Clear explanation of the project, story idea, visual choices, and AI workflow.</td><td class="p-3 text-right font-semibold">20</td></tr>
+            <tr><td class="p-3 font-semibold">Practice / rehearsal</td><td class="p-3 text-gray-700">The student has practiced enough to present without long pauses or confusion.</td><td class="p-3 text-right font-semibold">10</td></tr>
+            <tr><td class="p-3 font-semibold">Time requirements</td><td class="p-3 text-gray-700">The presentation respects the expected time and does not become too short or too long.</td><td class="p-3 text-right font-semibold">10</td></tr>
+            <tr><td class="p-3 font-semibold">Text and visual balance</td><td class="p-3 text-gray-700">The website balances story text, generated images, and layout instead of being only text or only images.</td><td class="p-3 text-right font-semibold">10</td></tr>
+            <tr><td class="p-3 font-semibold">Synchronization</td><td class="p-3 text-gray-700">The presentation matches what is visible on the website and follows the structure logically.</td><td class="p-3 text-right font-semibold">10</td></tr>
+            <tr><td class="p-3 font-semibold">Storytelling, not reading</td><td class="p-3 text-gray-700">The student tells and explains the work instead of simply reading text from the screen.</td><td class="p-3 text-right font-semibold">10</td></tr>
+            <tr><td class="p-3 font-semibold">Literacy and formatting</td><td class="p-3 text-gray-700">Correct English, readable formatting, clean HTML/CSS layout, and consistent visual presentation.</td><td class="p-3 text-right font-semibold">10</td></tr>
+            <tr><td class="p-3 font-semibold">Answers to questions</td><td class="p-3 text-gray-700">Ability to answer questions about the story, prompts, tools, code, and design decisions.</td><td class="p-3 text-right font-semibold">20</td></tr>
+            <tr><td class="p-3 font-semibold">Bonus: creativity</td><td class="p-3 text-gray-700">Original approach, unusual interaction, strong atmosphere, extra polish, or creative use of AI.</td><td class="p-3 text-right font-semibold">10</td></tr>
+            <tr><td class="p-3 font-semibold">Bonus: English</td><td class="p-3 text-gray-700">Good spoken and written English during the project and presentation.</td><td class="p-3 text-right font-semibold">10</td></tr>
+            <tr class="bg-gray-50"><td class="p-3 font-bold">Total</td><td class="p-3 text-gray-700">Maximum presentation/project score from the Excel evaluation sheet.</td><td class="p-3 text-right font-bold">120</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-6 mt-6">
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+          <h3 class="text-2xl font-semibold mb-4">Character description table</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse">
+              <thead><tr class="bg-gray-100"><th class="p-2 text-left">Character name</th><th class="p-2 text-left">Visual description</th><th class="p-2 text-left">Notes / tool used</th></tr></thead>
+              <tbody><tr class="border-t"><td class="p-2">&nbsp;</td><td class="p-2"></td><td class="p-2"></td></tr><tr class="border-t"><td class="p-2">&nbsp;</td><td class="p-2"></td><td class="p-2"></td></tr><tr class="border-t"><td class="p-2">&nbsp;</td><td class="p-2"></td><td class="p-2"></td></tr></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+          <h3 class="text-2xl font-semibold mb-4">Location description table</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse">
+              <thead><tr class="bg-gray-100"><th class="p-2 text-left">Location name</th><th class="p-2 text-left">Visual description</th><th class="p-2 text-left">Notes / tool used</th></tr></thead>
+              <tbody><tr class="border-t"><td class="p-2">&nbsp;</td><td class="p-2"></td><td class="p-2"></td></tr><tr class="border-t"><td class="p-2">&nbsp;</td><td class="p-2"></td><td class="p-2"></td></tr><tr class="border-t"><td class="p-2">&nbsp;</td><td class="p-2"></td><td class="p-2"></td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="max-w-7xl mx-auto px-6 pb-10 text-center text-sm text-gray-500">
+    <p>Workshop page prepared for student use. Rename this file to <code>index.html</code> when placing it in your workshop folder or GitHub Pages repository.</p>
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        buttons.forEach(b => b.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(tab).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
