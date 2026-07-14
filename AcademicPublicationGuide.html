@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Practical bilingual publication advice for PhD students and academic staff." />
+  <title>Academic Publication Guide | Наръчник за научни публикации</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #f8fafc; }
+    .tip-card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .tip-card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(15, 23, 42, .10); }
+    .lang-bg { display: none; }
+    body.show-both .lang-bg { display: block; }
+    body.show-bg .lang-en { display: none; }
+    body.show-bg .lang-bg { display: block; }
+    .filter-btn.active { background: #4f46e5; color: white; border-color: #4f46e5; }
+    .category-section.hidden-section { display: none; }
+  </style>
+</head>
+<body class="text-slate-800 show-both">
+  <header class="bg-gradient-to-br from-indigo-700 via-indigo-600 to-violet-600 text-white">
+    <div class="max-w-7xl mx-auto px-6 py-14 md:py-20">
+      <div class="max-w-4xl">
+        <span class="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-sm font-semibold ring-1 ring-white/25">PhD & Academic Staff Resource</span>
+        <h1 class="mt-5 text-4xl md:text-6xl font-bold tracking-tight">Academic Publication Guide</h1>
+        <p class="mt-3 text-2xl md:text-3xl font-semibold text-indigo-100">Практически наръчник за научни публикации</p>
+        <p class="mt-6 max-w-3xl text-lg leading-8 text-indigo-50">A card-based collection of practical advice for planning research, choosing journals, writing manuscripts, handling peer review, and building academic visibility.</p>
+        <p class="mt-2 max-w-3xl text-base leading-7 text-indigo-100">Кратки и лесни за преглед съвети за планиране на изследвания, избор на списание, писане на статии, рецензиране и научна видимост.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-10">
+    <section class="bg-white shadow-md rounded-2xl p-5 md:p-6 border border-slate-100 mb-10">
+      <div class="flex flex-col gap-5">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-bold">Browse the guide / Разгледайте съветите</h2>
+            <p class="text-slate-600 mt-1">Filter by stage, switch language, or search for a topic.</p>
+          </div>
+          <div class="flex flex-wrap gap-2" aria-label="Language selector">
+            <button class="lang-btn rounded-xl border border-slate-300 px-4 py-2 font-semibold hover:bg-slate-50" data-lang="en">English</button>
+            <button class="lang-btn rounded-xl border border-slate-300 px-4 py-2 font-semibold hover:bg-slate-50" data-lang="bg">Български</button>
+            <button class="lang-btn rounded-xl border border-indigo-600 bg-indigo-600 text-white px-4 py-2 font-semibold" data-lang="both">EN + BG</button>
+          </div>
+        </div>
+
+        <input id="searchInput" type="search" placeholder="Search tips / Търсене..." class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+
+        <div id="filters" class="flex flex-wrap gap-2">
+          <button class="filter-btn active rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold" data-filter="all">All / Всички</button>
+          <button class="filter-btn rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold hover:bg-slate-50" data-filter="strategy">Strategy</button>
+          <button class="filter-btn rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold hover:bg-slate-50" data-filter="journal">Journal</button>
+          <button class="filter-btn rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold hover:bg-slate-50" data-filter="writing">Writing</button>
+          <button class="filter-btn rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold hover:bg-slate-50" data-filter="review">Review articles</button>
+          <button class="filter-btn rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold hover:bg-slate-50" data-filter="submission">Submission</button>
+          <button class="filter-btn rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold hover:bg-slate-50" data-filter="visibility">Visibility</button>
+        </div>
+      </div>
+    </section>
+
+    <div id="guideSections" class="space-y-14">
+      <section class="category-section" data-category="strategy">
+        <div class="mb-5">
+          <h2 class="text-3xl font-bold">1. Research strategy / Изследователска стратегия</h2>
+          <p class="mt-2 text-slate-600">Start with work worth publishing, then build a focused publication plan.</p>
+        </div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="novelty originality contribution significance новост оригиналност принос">
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">Foundation / Основа</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Originality is not the same as novelty</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Doing something that has not been done before may be original, but a strong paper also needs a meaningful scientific contribution. Explain clearly what changes because of your work.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Оригиналността не е същото като научна новост</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Фактът, че нещо не е правено досега, може да го прави оригинално, но силната статия трябва да има и значим научен принос. Обяснете ясно какво се променя благодарение на вашата работа.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="quality quantity focus direction качество количество фокус">
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">Career / Кариера</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Prefer a coherent research direction over scattered output</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">A smaller number of strong, connected publications usually communicates expertise better than many unrelated papers. Let each article strengthen a recognizable research profile.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Прилагайте последователност в научните си трудове, вместо да сменяте предметни области често</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">По-малък брой силни и свързани публикации обикновено показват опит и знания по-добре от много несвързани статии. Нека всяка публикация развива разпознаваем научен профил.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="ready publishable outdated duplication conclusions готовност публикуване">
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">Readiness / Готовност</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Ask whether the work is truly ready</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Before writing, check that the results are current, the conclusions are supported, and the work adds enough to existing knowledge. Avoid publishing duplicated or outdated work merely to increase count.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Проверете дали работата действително е свършена</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Преди писане проверете дали резултатите са актуални, изводите са подкрепени и работата добавя достатъчно към съществуващото знание. Не публикувайте повторение или остаряла работа само за бройка.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="master plan phd methods thesis doctoral план докторантура методи">
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">PhD planning / Докторантура</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Use a review as a master plan for the PhD</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">A well-designed survey can map the field, expose gaps, and identify methods worth testing. Treat its taxonomy and comparison table as a roadmap for later experimental chapters and papers.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Използвайте обзорната статия като главен план за докторантурата</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Добре разработеният обзор може да картографира областта, да открие пропуски и да посочи методи за изследване. Използвайте категоризацията и сравнителните таблици като пътна карта за бъдещи експерименти и статии.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="category-section" data-category="journal">
+        <div class="mb-5"><h2 class="text-3xl font-bold">2. Choosing a journal / Избор на списание</h2><p class="mt-2 text-slate-600">Find the right audience, verify quality, and submit strategically.</p></div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="publishers journal finder ai publisher издател списание finder">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Discovery / Търсене</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Use major publishers’ journal finders</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Start with the established publishers in your discipline and use their official journal-matching tools. They use journal scope and portfolio data and are often more reliable than a generic AI recommendation.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Използвайте инструментите за избор на списание на големите издатели</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Започнете с утвърдените издатели във вашата област и използвайте официалните им инструменти за съпоставяне. Те работят с реалния обхват на списанията и често са по-надеждни от обща AI препоръка.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="high impact factor submit lower cascade висок импакт фактор фактор">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Ambition / Амбиция</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Begin high, then move down deliberately</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">When the work is strong and well matched, consider a higher-impact journal first. A rejection can still provide useful feedback; revise carefully and move to the next suitable journal rather than submitting randomly.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Започнете от по-високо ниво и слизайте целенасочено</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Когато работата е силна и подходяща по тематика, първо опитайте списание с по-висок импакт фактор. Отказът може да даде полезна обратна връзка; преработете и преминете към следващото подходящо списание, вместо да изпращате хаотично.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="scope readership audience journal fit обхват аудитория списание">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Fit / Съответствие</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Scope and readership matter more than prestige alone</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Check recent issues, aims and scope, article types, typical methods, length limits, and expected audience. A well-matched journal gives the paper a better chance of review, readership, and citation.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Обхватът и аудиторията са по-важни от престижа сам по себе си</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Прегледайте последните броеве, целите и обхвата, типовете статии, типичните методи, ограниченията за обем и очакваната аудитория. Добрата тематична съвместимост увеличава шанса за рецензиране, четене и цитиране.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="predatory fake impact acceptance review ethics хищническо списание фалшив импакт">
+            <span class="text-xs font-bold uppercase tracking-wider text-rose-700">Warning / Внимание</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Verify that the journal is legitimate</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Warning signs include guaranteed or extremely rapid acceptance, no meaningful reviewer comments, unverifiable editors, invented metrics, unclear fees, and false indexing claims. Verify indexing directly in the relevant databases.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Проверете дали списанието е легитимно</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Сигнали за риск са гарантирано или прекалено бързо приемане, липса на реални рецензии, непроверими редактори, измислени метрики, неясни такси и неверни твърдения за индексиране. Проверявайте индексирането директно в съответните бази - Scopus и Web of Science.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="category-section" data-category="writing">
+        <div class="mb-5"><h2 class="text-3xl font-bold">3. Writing the paper / Писане на статията</h2><p class="mt-2 text-slate-600">Make the contribution easy to understand from title to conclusion.</p></div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="title keywords popular papers language заглавие ключови думи">
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Title / Заглавие</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Study successful titles in your field</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Collect titles from influential papers, identify recurring technical terms and structures, and ask why they work. Then craft a concise title that accurately signals the problem, method, and contribution without copying phrasing.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Изследвайте успешните заглавия във вашата област</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Съберете заглавия от влиятелни публикации, открийте повтарящи се термини и структури и анализирайте защо работят. След това създайте кратко и точно заглавие, което показва проблема, метода и приноса, без да копира формулировки.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="abstract problem objective method conclusion резюме цел метод">
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Abstract / Резюме</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Use the abstract to sell the scientific story</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">State the problem, objective, significance, methodology, main findings, and contribution in a clear sequence. Make the novelty understandable to a reader who may never open the full paper.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Използвайте резюмето, за да представите научната история</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Представете последователно проблема, целта, значимостта, методологията, основните резултати и приноса. Направете новостта разбираема дори за читател, който няма да отвори целия текст.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="introduction limitations novelty significance увод ограничения новост">
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Introduction / Увод</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Build the introduction around a research gap</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Explain the problem, why it matters, what existing solutions do, where they fall short, and how your approach addresses that limitation. End with explicit aims and contributions.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Изградете увода около изследователски проблем</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Обяснете проблема, неговата значимост, съществуващите решения, техните ограничения и начина, по който вашият подход ги преодолява. Завършете с ясни цели и приноси.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="methods reproducibility equipment materials controls методология възпроизводимост">
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Method / Метод</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Write methods for reproducibility</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Provide enough detail for another researcher to repeat the study. Identify data, equipment, materials, software, parameters, controls, reference tests, and evaluation procedures; cite standard procedures instead of rewriting them.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Пишете методологията с цел възпроизводимост</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Дайте достатъчно подробности, за да може друг изследовател да повтори проучването. Посочете данни, оборудване, материали, софтуер, параметри, контролни проби, референтни тестове и оценъчни процедури.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="results discussion trend interpretation comparison significance резултати дискусия тенденция">
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Results / Резултати</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Describe, explain, compare, interpret</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Introduce each table or figure before showing it. Then describe the pattern, explain it, compare it with published work, and discuss its significance and implications. Do not merely repeat numbers.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Опишете, обяснете, сравнете и интерпретирайте</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Представете всяка таблица или фигура преди нейната поява. След това опишете тенденцията, обяснете я, сравнете я с публикувани резултати и обсъдете значимостта и последствията. Не повтаряйте само числата.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="survey reviews interpretation advantages disadvantages обзорни статии предимства недостатъци">
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Interpretation / Интерпретация</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Use good reviews to strengthen interpretation</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">High-quality reviews often summarize advantages, disadvantages, assumptions, and limitations more clearly than individual studies. Use them to deepen your reasoning—but still verify important claims in the original sources.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Използвайте добри обзорни статии за по-добра интерпретация</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Качествените обзорни статии често представят предимства, недостатъци, допускания и ограничения по-ясно от отделните изследвания. Използвайте ги за по-задълбочено мислене, но проверявайте важните твърдения в първоизточниците.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="figures tables statistics captions error bars графики таблици статистика">
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Presentation / Представяне</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Let every figure stand on its own</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Choose the right chart type, avoid overcrowding, include uncertainty or statistical analysis where appropriate, and write self-explanatory captions. Do not present the same result in both a figure and a table without a reason.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Нека всяка фигура бъде разбираема самостоятелно</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Изберете подходящ тип графика, не претрупвайте, включете неопределеност или статистически анализ, когато е необходимо, и пишете самостоятелно разбираеми надписи. Не дублирайте без причина един и същ резултат в таблица и фигура.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="conclusion abstract future work application заключение резюме бъдеща работа">
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Conclusion / Заключение</span>
+            <h3 class="lang-en text-xl font-bold mt-2">The conclusion is not a second abstract</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Return to the aims, state what the work adds to knowledge, discuss significance and applications, acknowledge meaningful limitations, and suggest focused future work. Do not copy the abstract or repeat the full results section.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Заключението не е второ резюме</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Върнете се към целите, посочете приноса към знанието, обсъдете значимостта и приложенията, признайте съществените ограничения и предложете конкретна бъдеща работа. Не копирайте резюмето и не повтаряйте целия раздел с резултати.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="category-section" data-category="review">
+        <div class="mb-5"><h2 class="text-3xl font-bold">4. Writing a review article / Писане на обзорна статия</h2><p class="mt-2 text-slate-600">A review should organize and evaluate a field, not merely retell it.</p></div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="taxonomy categorization criteria review taxonomy категоризация критерии обзор">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-700">Structure / Структура</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Define categorization criteria first</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Before collecting hundreds of papers, decide how the field will be divided: by method, data, task, architecture, evaluation, application, or another defensible criterion. The taxonomy is the intellectual backbone of the review.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Първо определете критериите за категоризация</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Преди да събирате стотици публикации, решете как ще разделите областта: по метод, данни, задача, архитектура, оценяване, приложение или друг защитим критерий. Таксономията е интелектуалният гръбнак на обзора.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="read survey articles first обзори първо прочетете">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-700">Preparation / Подготовка</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Read existing reviews before designing yours</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Existing surveys reveal established terminology, common taxonomies, major datasets, and unresolved disagreements. They also help you define how your review will be newer, broader, deeper, or methodologically stronger.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Прочетете съществуващите обзори, преди да проектирате своя</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Съществуващите обзори показват утвърдената терминология, типичните таксономии, основните набори от данни и нерешените спорове. Те помагат да определите с какво вашият обзор ще бъде по-нов, по-широк, по-задълбочен или методологично по-силен.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="advantages disadvantages critique synthesis analysis предимства недостатъци анализ синтез">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-700">Analysis / Анализ</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Compare methods, do not only summarize papers</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">For each family of methods, examine strengths, weaknesses, assumptions, computational cost, data needs, reproducibility, and suitable use cases. A review becomes valuable when it produces synthesis and judgment.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Сравнявайте методите, не само обобщавайте публикациите</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">За всяко семейство методи разгледайте силни и слаби страни, допускания, изчислителна цена, нужди от данни, възпроизводимост и подходящи приложения. Обзорът става ценен, когато създава синтез и аргументирана оценка.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="category-section" data-category="submission">
+        <div class="mb-5"><h2 class="text-3xl font-bold">5. Submission and peer review / Подаване и рецензиране</h2><p class="mt-2 text-slate-600">Reduce avoidable rejection and respond professionally.</p></div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="author guidelines format checklist насоки автори форматиране">
+            <span class="text-xs font-bold uppercase tracking-wider text-violet-700">Compliance / Съответствие</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Follow the author guidelines exactly</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Editors handle many submissions and may reject quickly when formatting, scope, length, references, or required files are wrong. Treat the journal checklist as part of the scientific work, not as clerical detail.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Следвайте точно указанията за автори</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Редакторите обработват много ръкописи и могат да откажат бързо при грешен формат, обхват, обем, библиография или липсващи файлове. Приемете контролния списък на списанието като част от научната работа, а не като административна дреболия.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="internal review proofreading english supervisor colleague вътрешна рецензия английски">
+            <span class="text-xs font-bold uppercase tracking-wider text-violet-700">Quality control / Контрол</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Run an internal review before submission</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Revise before sending the manuscript to your supervisor. Ask a domain expert to challenge the science and a reader outside the narrow topic to test clarity. Correct language problems before they distract editors.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Направете вътрешно рецензиране преди подаване</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Преработете текста, преди да го изпратите на научния ръководител. Помолете специалист да провери науката, а човек извън тясната тема — яснотата. Отстранете езиковите проблеми, преди да разсеят редакторите.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="reviewers suggest conflicts coauthors institution region рецензенти конфликт">
+            <span class="text-xs font-bold uppercase tracking-wider text-violet-700">Reviewers / Рецензенти</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Suggest independent, credible reviewers</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Avoid close collaborators, recent co-authors, and people from your institution. Prefer qualified researchers whose work is genuinely relevant and whose independence can be defended.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Предлагайте независими и компетентни рецензенти</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Избягвайте близки сътрудници, скорошни съавтори и хора от вашата институция. Предлагайте квалифицирани изследователи с реална тематична близост и защитима независимост.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-amber-200 shadow-md bg-amber-50/40" data-search="cheeky tip reserve analysis reviewers ask не показвайте всичко рецензенти">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-700">Tactical note / Тактически съвет</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Keep useful supporting analyses ready—but never hide essential evidence</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">It can be sensible to retain secondary analyses, robustness checks, or extra visualizations for revision. However, the submitted paper must already contain everything needed to support its claims. Never omit crucial evidence strategically.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Подгответе допълнителни анализи, но не крийте съществени доказателства</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Разумно е да имате готови вторични анализи, проверки за устойчивост или допълнителни визуализации за ревизия. Подадената статия обаче трябва да съдържа всичко необходимо за подкрепа на твърденията. Не пропускайте умишлено ключови доказателства.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="response reviewers comments revision polite point by point отговор рецензенти ревизия">
+            <span class="text-xs font-bold uppercase tracking-wider text-violet-700">Revision / Ревизия</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Answer reviewers point by point</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Be respectful, specific, and evidence-based. Quote or summarize each comment, explain the change, identify where it appears, and justify calmly when you disagree. Treat criticism as a chance to strengthen the paper.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Отговаряйте на рецензентите точка по точка</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Бъдете уважителни, конкретни и аргументирани. Цитирайте или обобщете всеки коментар, обяснете промяната, посочете къде е направена и спокойно защитете позицията си при несъгласие. Използвайте критиката за подобряване на статията.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="category-section" data-category="visibility">
+        <div class="mb-5"><h2 class="text-3xl font-bold">6. References, ethics and visibility / Литература, етика и видимост</h2><p class="mt-2 text-slate-600">Publish responsibly and help the right audience discover the work.</p></div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="references recent self citations journal citations bibliography литература цитиране">
+            <span class="text-xs font-bold uppercase tracking-wider text-fuchsia-700">References / Литература</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Build a current and balanced reference list</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Include foundational work and recent research, cite the original sources behind important claims, avoid unnecessary self-citation, and include relevant work from the target journal only when it genuinely belongs.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Изградете актуална и балансирана библиография</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Включете основополагащи и нови изследвания, цитирайте първоизточниците зад важните твърдения, избягвайте ненужно самоцитиране и включвайте публикации от целевото списание само когато са действително релевантни.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="plagiarism paraphrase attribution source плагиатство перифразиране източник">
+            <span class="text-xs font-bold uppercase tracking-wider text-fuchsia-700">Ethics / Етика</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Acknowledge every borrowed idea</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Paraphrasing does not remove the need for citation. Attribute ideas, data, methods, figures, and distinctive arguments to their sources. Keep notes carefully so citations are not lost during drafting.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Посочвайте източника на всяка заимствана идея</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Перифразирането не премахва нуждата от цитиране. Посочвайте източниците на идеи, данни, методи, фигури и характерни аргументи. Водете внимателни бележки, за да не изгубите цитати по време на писане.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="visibility collaboration share citations profile видимост сътрудничество цитирания">
+            <span class="text-xs font-bold uppercase tracking-wider text-fuchsia-700">Visibility / Видимост</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Good work still needs to be discoverable</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Use precise titles and keywords, maintain researcher profiles, present at conferences, share permissible versions, and build genuine international collaboration. Visibility should amplify quality, not replace it.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Доброто изследване трябва да бъде откриваемо</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Използвайте точни заглавия и ключови думи, поддържайте научните си профили, представяйте на конференции, споделяйте разрешени версии и изграждайте реално международно сътрудничество. Видимостта трябва да усилва качеството, а не да го замества.</p>
+          </article>
+
+          <article class="tip-card bg-white rounded-2xl p-6 border border-slate-100 shadow-md" data-search="reviewer early career rejection criticism рецензент кариера отказ критика">
+            <span class="text-xs font-bold uppercase tracking-wider text-fuchsia-700">Development / Развитие</span>
+            <h3 class="lang-en text-xl font-bold mt-2">Become a reviewer early</h3>
+            <p class="lang-en mt-3 text-slate-700 leading-7">Reviewing teaches you how editors assess novelty, clarity, evidence, and presentation. It also improves your ability to anticipate criticism and write constructive responses—provided you accept only work you are qualified to evaluate.</p>
+            <h3 class="lang-bg text-xl font-bold mt-4">Започнете да рецензирате рано в кариерата си</h3>
+            <p class="lang-bg mt-3 text-slate-600 leading-7">Рецензирането показва как редакторите оценяват новост, яснота, доказателства и представяне. То помага да предвиждате критика и да пишете конструктивни отговори, стига да приемате само теми, за които сте компетентни.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <section id="noResults" class="hidden bg-white rounded-2xl border border-slate-200 p-10 text-center shadow-sm mt-10">
+      <h2 class="text-2xl font-bold">No matching tips / Няма намерени съвети</h2>
+      <p class="mt-2 text-slate-600">Try another keyword or select “All”.</p>
+    </section>
+
+    <section class="mt-14 rounded-2xl bg-slate-900 text-white p-7 md:p-9">
+      <h2 class="text-2xl font-bold">Final principle / Основен принцип</h2>
+      <p class="lang-en mt-3 text-slate-200 text-lg leading-8">A strong publication begins with strong work: a meaningful question, a sound method, honest analysis, and a clear explanation of what the research adds.</p>
+      <p class="lang-bg mt-3 text-slate-300 text-lg leading-8">Силната публикация започва със силно изследване: значим въпрос, надежден метод, честен анализ и ясно обяснение на научния принос.</p>
+    </section>
+  </main>
+
+  <footer class="max-w-7xl mx-auto px-6 pb-10 text-center text-sm text-slate-500">
+    <p>Prepared as a practical academic resource. Verify journal metrics, indexing, fees, and policies directly before every submission.</p>
+  </footer>
+
+  <script>
+    const body = document.body;
+    const cards = [...document.querySelectorAll('.tip-card')];
+    const sections = [...document.querySelectorAll('.category-section')];
+    const filterButtons = [...document.querySelectorAll('.filter-btn')];
+    const languageButtons = [...document.querySelectorAll('.lang-btn')];
+    const searchInput = document.getElementById('searchInput');
+    const noResults = document.getElementById('noResults');
+    let activeFilter = 'all';
+
+    function setLanguage(lang) {
+      body.classList.remove('show-both', 'show-bg');
+      if (lang === 'both') body.classList.add('show-both');
+      if (lang === 'bg') body.classList.add('show-bg');
+      languageButtons.forEach(btn => {
+        const selected = btn.dataset.lang === lang;
+        btn.classList.toggle('bg-indigo-600', selected);
+        btn.classList.toggle('text-white', selected);
+        btn.classList.toggle('border-indigo-600', selected);
+      });
+    }
+
+    function applyFilters() {
+      const query = searchInput.value.trim().toLowerCase();
+      let totalVisible = 0;
+
+      sections.forEach(section => {
+        const categoryMatches = activeFilter === 'all' || section.dataset.category === activeFilter;
+        let visibleInSection = 0;
+
+        section.querySelectorAll('.tip-card').forEach(card => {
+          const text = (card.innerText + ' ' + (card.dataset.search || '')).toLowerCase();
+          const matches = categoryMatches && (!query || text.includes(query));
+          card.classList.toggle('hidden', !matches);
+          if (matches) visibleInSection++;
+        });
+
+        section.classList.toggle('hidden-section', visibleInSection === 0);
+        totalVisible += visibleInSection;
+      });
+
+      noResults.classList.toggle('hidden', totalVisible !== 0);
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        activeFilter = button.dataset.filter;
+        filterButtons.forEach(btn => btn.classList.toggle('active', btn === button));
+        applyFilters();
+      });
+    });
+
+    languageButtons.forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
+    searchInput.addEventListener('input', applyFilters);
+  </script>
+</body>
+</html>
