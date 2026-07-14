@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UI and Web Design Resources</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .soft-grid { background-image: radial-gradient(circle at 1px 1px, rgba(15,23,42,0.08) 1px, transparent 0); background-size: 22px 22px; }
+    .resource-card { transition: transform 160ms ease, box-shadow 160ms ease; }
+    .resource-card:hover { transform: translateY(-4px); }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <header class="soft-grid border-b border-gray-200 bg-gradient-to-br from-white via-slate-50 to-indigo-50">
+    <div class="max-w-7xl mx-auto px-6 py-10">
+      <p class="inline-flex items-center rounded-full bg-indigo-100 px-3 py-1 text-sm font-semibold text-indigo-700 mb-4">UI + Web Design + Interaction</p>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">UI and Web Design Resources</h1>
+      <p class="text-lg text-gray-700 max-w-3xl">A curated set of practical resources for designing better interfaces: color palettes, CSS animations, 3D web experiences, data visualization, and creative portfolio inspiration.</p>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-8">
+    <!-- Category: Color and visual identity -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4">Color and Visual Identity / Цветове и визуален стил</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://coolors.co/" target="_blank" class="resource-card block bg-white shadow-md rounded-xl p-6 hover:shadow-xl border border-gray-100">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <h3 class="text-xl font-semibold">Coolors</h3>
+            <span class="text-xs font-semibold rounded-full bg-pink-100 text-pink-700 px-2 py-1">Palette</span>
+          </div>
+          <p class="text-gray-700">Fast palette generator for choosing colors, exploring combinations, extracting colors from images, checking contrast, and previewing palettes on sample designs.</p>
+          <p class="mt-2 text-sm text-gray-600">Полезно за избор на цветова палитра и проверка как цветовете ще изглеждат заедно.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Category: Motion and microinteractions -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4">Motion and Microinteractions / Анимации и микровзаимодействия</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://animate.style/" target="_blank" class="resource-card block bg-white shadow-md rounded-xl p-6 hover:shadow-xl border border-gray-100">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <h3 class="text-xl font-semibold">Animate.css</h3>
+            <span class="text-xs font-semibold rounded-full bg-amber-100 text-amber-700 px-2 py-1">CSS</span>
+          </div>
+          <p class="text-gray-700">Ready-to-use CSS animations for emphasis, entrances, exits, attention cues, home pages, sliders, and small interface effects.</p>
+          <p class="mt-2 text-sm text-gray-600">Използвайте внимателно — анимацията трябва да помага на потребителя, не да пречи.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Category: 3D and immersive interfaces -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4">3D and Interactive Web Experiences / 3D и интерактивен уеб</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://threejs.org/" target="_blank" class="resource-card block bg-white shadow-md rounded-xl p-6 hover:shadow-xl border border-gray-100">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <h3 class="text-xl font-semibold">Three.js</h3>
+            <span class="text-xs font-semibold rounded-full bg-sky-100 text-sky-700 px-2 py-1">3D</span>
+          </div>
+          <p class="text-gray-700">JavaScript 3D library with examples, documentation, editor tools, and community resources for building interactive 3D content in the browser.</p>
+          <p class="mt-2 text-sm text-gray-600">Подходящо за интерактивни демота, 3D портфолиа, визуализации, игри и ефектни уеб секции.</p>
+        </a>
+
+        <a href="http://www.rleonardi.com/interactive-resume/" target="_blank" class="resource-card block bg-white shadow-md rounded-xl p-6 hover:shadow-xl border border-gray-100">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <h3 class="text-xl font-semibold">Interactive Resume</h3>
+            <span class="text-xs font-semibold rounded-full bg-violet-100 text-violet-700 px-2 py-1">Portfolio</span>
+          </div>
+          <p class="text-gray-700">A memorable interactive portfolio/resume example. Use it as inspiration for presenting skills, projects, and personal style in a creative way.</p>
+          <p class="mt-2 text-sm text-gray-600">Идея за портфолио: не копирайте дизайна, а анализирайте как историята и интерфейсът работят заедно.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Category: Data visualization -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4">Data Visualization / Визуализация на данни</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://observablehq.com/@d3/gallery?utm_source=d3js-org&utm_medium=hero&utm_campaign=try-observable" target="_blank" class="resource-card block bg-white shadow-md rounded-xl p-6 hover:shadow-xl border border-gray-100">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <h3 class="text-xl font-semibold">D3 Gallery on Observable</h3>
+            <span class="text-xs font-semibold rounded-full bg-emerald-100 text-emerald-700 px-2 py-1">Charts</span>
+          </div>
+          <p class="text-gray-700">Collection of D3 examples for charts, maps, networks, interactive visualizations, and visual storytelling with data.</p>
+          <p class="mt-2 text-sm text-gray-600">Полезно за идеи за графики, табла, интерактивни справки и визуално обяснение на данни.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
